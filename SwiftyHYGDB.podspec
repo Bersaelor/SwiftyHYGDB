@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-A Swift library to work with the astronexus.com HYG database of stars
-                       DESC
+Helper library with `struct Star` representing stars from the astronexus.com HYG Database. Includes methods to load `*.csv` files in an efficient way when formatted according to astronexus description.
+                        DESC
 
   s.homepage         = 'https://github.com/Bersaelor/SwiftyHYGDB'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
