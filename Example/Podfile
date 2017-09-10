@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'SwiftyHYGDB_Example' do
+   platform :ios, '10.0'
+
+  pod 'SwiftyHYGDB', :path => '../'
+
+  target 'SwiftyHYGDB_Tests' do
+    inherit! :search_paths
+
+  end
+end

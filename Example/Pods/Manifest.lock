@@ -1,0 +1,16 @@
+PODS:
+  - SwiftyHYGDB (0.1.0)
+
+DEPENDENCIES:
+  - SwiftyHYGDB (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftyHYGDB:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SwiftyHYGDB: 3ca416bf5a7a0e0f7ddc841e363f54e93dd21c72
+
+PODFILE CHECKSUM: c39d03a1fc2dbae9e8774972241f7199ffd470c0
+
+COCOAPODS: 1.3.1

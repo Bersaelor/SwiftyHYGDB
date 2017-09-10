@@ -1,0 +1,6 @@
+framework module Pods_SwiftyHYGDB_Tests {
+  umbrella header "Pods-SwiftyHYGDB_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

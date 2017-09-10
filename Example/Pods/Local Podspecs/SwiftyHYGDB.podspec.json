@@ -1,0 +1,25 @@
+{
+  "name": "SwiftyHYGDB",
+  "version": "0.1.0",
+  "summary": "A Swift library to work with the astronexus.com HYG database of stars",
+  "description": "A Swift library to work with the astronexus.com HYG database of stars",
+  "homepage": "https://github.com/Bersaelor/SwiftyHYGDB",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Bersaelor": "konrad@mathheartcode.com"
+  },
+  "source": {
+    "git": "https://github.com/Bersaelor/SwiftyHYGDB.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/bersaelor",
+  "platforms": {
+    "ios": "9.3",
+    "osx": "10.10",
+    "tvos": "9.2"
+  },
+  "source_files": "Sources/*"
+}
