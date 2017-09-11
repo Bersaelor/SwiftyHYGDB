@@ -8,6 +8,9 @@
 import Foundation
 
 public struct Star {
+    public static let ascensionRange: CGFloat = 24.0
+    public static let declinationRange: CGFloat = 180
+    
     public let dbID: Int32
     public let normalizedAscension: Float
     public let normalizedDeclination: Float
@@ -15,12 +18,8 @@ public struct Star {
 }
 
 extension Star {
-    var starPoint: CGPoint {
-        guard let data = starData?.value else { return CGPoint.zero }
-        return CGPoint(x: CGFloat(data.right_ascension), y: CGFloat(data.declination))
-    }
     
-    init? (row: String, advanceByYears: Float? = nil) {
+    public init? (row: String, advanceByYears: Float? = nil) {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
@@ -61,7 +60,15 @@ extension Star {
         self.starData = Box(starData)
     }
     
-    init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
+    /// Convenience initializer when values are known. Can be used to create a test-star to search
+    /// for close other stars
+    ///
+    /// - Parameters:
+    ///   - ascension: right Ascension of star
+    ///   - declination: declination of star
+    ///   - dbID: dbID in the HYG database, optional
+    ///   - starData: full star data, optional
+    public init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
         self.dbID = dbID
         self.normalizedAscension = Star.normalize(rightAscension: ascension)
         self.normalizedDeclination = Star.normalize(declination: declination)
@@ -89,17 +96,19 @@ extension Star {
         else if right_ascension > Float(ascensionRange) { right_ascension -= Float(ascensionRange) }
     }
     
-    func starMoved(ascension: Float, declination: Float) -> Star {
+    public func starMoved(ascension: Float, declination: Float) -> Star {
         let normalizedAsc = self.normalizedAscension + Star.normalize(rightAscension: ascension)
         let normalizedDec = self.normalizedDeclination + Star.normalize(declination: declination)
         return Star(ascension: Star.rightAscension(normalizedAscension: normalizedAsc),
                     declination: Star.declination(normalizedDeclination: normalizedDec),
                     dbID: self.dbID, starData: self.starData)
     }
+    
+    public var starPoint: CGPoint {
+        guard let data = starData?.value else { return CGPoint.zero }
+        return CGPoint(x: CGFloat(data.right_ascension), y: CGFloat(data.declination))
+    }
 }
-
-let ascensionRange: CGFloat = 24.0
-let declinationRange: CGFloat = 180
 
 extension Star {
     public static func normalize(rightAscension: Float) -> Float {

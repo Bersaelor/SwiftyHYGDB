@@ -10,22 +10,22 @@ import Foundation
 // swiftlint:disable variable_name
 
 public struct StarData: Codable {
-    let right_ascension: Float
-    let declination: Float
-    let hip_id: Int32?
-    let hd_id: Int32?
-    let hr_id: Int32?
-    let gl_id: String?
-    let bayer_flamstedt: String?
-    let properName: String?
-    let distance: Double
-    let pmra: Double
-    let pmdec: Double
-    let rv: Double?
-    let mag: Double
-    let absmag: Double
-    let spectralType: String?
-    let colorIndex: Float?
+    public let right_ascension: Float
+    public let declination: Float
+    public let hip_id: Int32?
+    public let hd_id: Int32?
+    public let hr_id: Int32?
+    public let gl_id: String?
+    public let bayer_flamstedt: String?
+    public let properName: String?
+    public let distance: Double
+    public let pmra: Double
+    public let pmdec: Double
+    public let rv: Double?
+    public let mag: Double
+    public let absmag: Double
+    public let spectralType: String?
+    public let colorIndex: Float?
     
     enum CodingKeys: String, CodingKey {
         case right_ascension = "r"

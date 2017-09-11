@@ -7,17 +7,17 @@
 
 import Foundation
 
-final class Ref<T> {
+final public class Ref<T> {
     var value: T
     init(_ val: T) {value = val}
 }
 
 public struct Box<T> {
     //unmanaged because the assumption is that all data points are retained only once, and released at the end of the program
-    var ref: Unmanaged<Ref<T>>
+    public var ref: Unmanaged<Ref<T>>
     init(_ value: T) { ref = Unmanaged.passRetained(Ref(value)) }
     
-    var value: T {
+    public var value: T {
         get { return ref.takeUnretainedValue().value }
         set {
             ref.takeUnretainedValue().value = newValue
