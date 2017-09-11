@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Star {
-    let dbID: Int32
-    let normalizedAscension: Float
-    let normalizedDeclination: Float
-    let starData: Box<StarData>?
+    public let dbID: Int32
+    public let normalizedAscension: Float
+    public let normalizedDeclination: Float
+    public let starData: Box<StarData>?
 }
 
 extension Star {
@@ -46,8 +46,8 @@ extension Star {
         print("-> (\(right_ascension), \(declination))")
 
         self.dbID = dbID
-        self.normalizedAscension = Star.normalizedAscension(rightAscension: right_ascension)
-        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
+        self.normalizedAscension = Star.normalize(rightAscension: right_ascension)
+        self.normalizedDeclination = Star.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 hip_id: Int32(fields[1]),
@@ -63,8 +63,8 @@ extension Star {
     
     init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
         self.dbID = dbID
-        self.normalizedAscension = Star.normalizedAscension(rightAscension: ascension)
-        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
+        self.normalizedAscension = Star.normalize(rightAscension: ascension)
+        self.normalizedDeclination = Star.normalize(declination: declination)
         self.starData = starData
     }
     
@@ -90,8 +90,8 @@ extension Star {
     }
     
     func starMoved(ascension: Float, declination: Float) -> Star {
-        let normalizedAsc = self.normalizedAscension + Star.normalizedAscension(rightAscension: ascension)
-        let normalizedDec = self.normalizedDeclination + Star.normalizedDeclination(declination: declination)
+        let normalizedAsc = self.normalizedAscension + Star.normalize(rightAscension: ascension)
+        let normalizedDec = self.normalizedDeclination + Star.normalize(declination: declination)
         return Star(ascension: Star.rightAscension(normalizedAscension: normalizedAsc),
                     declination: Star.declination(normalizedDeclination: normalizedDec),
                     dbID: self.dbID, starData: self.starData)
@@ -102,17 +102,17 @@ let ascensionRange: CGFloat = 24.0
 let declinationRange: CGFloat = 180
 
 extension Star {
-    static func normalizedAscension(rightAscension: Float) -> Float {
+    public static func normalize(rightAscension: Float) -> Float {
         return rightAscension/Float(ascensionRange)
     }
-    static func normalizedDeclination(declination: Float) -> Float {
+    public static func normalize(declination: Float) -> Float {
         return (declination + 90)/Float(declinationRange)
     }
     
-    static func rightAscension(normalizedAscension: Float) -> Float {
+    public static func rightAscension(normalizedAscension: Float) -> Float {
         return Float(ascensionRange) * normalizedAscension
     }
-    static func declination(normalizedDeclination: Float) -> Float {
+    public static func declination(normalizedDeclination: Float) -> Float {
         return normalizedDeclination * Float(declinationRange) - 90
     }
 }

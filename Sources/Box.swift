@@ -12,7 +12,7 @@ final class Ref<T> {
     init(_ val: T) {value = val}
 }
 
-struct Box<T> {
+public struct Box<T> {
     //unmanaged because the assumption is that all data points are retained only once, and released at the end of the program
     var ref: Unmanaged<Ref<T>>
     init(_ value: T) { ref = Unmanaged.passRetained(Ref(value)) }

@@ -35,8 +35,8 @@ extension Star {
         Star.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         
         self.dbID = dbID
-        self.normalizedAscension = Star.normalizedAscension(rightAscension: right_ascension)
-        self.normalizedDeclination = Star.normalizedDeclination(declination: declination)
+        self.normalizedAscension = Star.normalize(rightAscension: right_ascension)
+        self.normalizedDeclination = Star.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 hip_id: hip_id,
