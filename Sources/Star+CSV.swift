@@ -7,8 +7,31 @@
 
 import Foundation
 
-/// High performance initializer
+extension Star {
+    var csvLine: String? {
+        guard let starData = self.starData?.value else { return nil }
+        var result = "\(dbID),"
+        result.append((starData.hip_id?.description ?? "").appending(","))
+        result.append((starData.hd_id?.description ?? "").appending(","))
+        result.append((starData.hr_id?.description ?? "").appending(","))
+        result.append((starData.gl_id?.description ?? "").appending(","))
+        result.append((starData.bayer_flamstedt ?? "").appending(","))
+        result.append((starData.properName ?? "").appending(","))
+        result.append((starData.right_ascension.description).appending(","))
+        result.append((starData.declination.description).appending(","))
+        result.append((starData.distance.description).appending(","))
+        result.append((starData.pmra.description).appending(","))
+        result.append((starData.pmdec.description).appending(","))
+        result.append((starData.rv?.description ?? "").appending(","))
+        result.append((starData.mag.description).appending(","))
+        result.append((starData.absmag.description).appending(","))
+        result.append((starData.spectralType ?? "").appending(","))
+        result.append(starData.colorIndex?.description ?? "")
+        return result
+    }
+}
 
+/// High performance initializer
 extension Star {
     init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
         var index = 0

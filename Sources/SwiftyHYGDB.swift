@@ -8,7 +8,7 @@
 import Foundation
 
 public class SwiftyHYGDB: NSObject {
-    static let maxVisibleMag = 6.5
+    public static let maxVisibleMag = 6.5
     
     private static var yearsSinceEraStart: Int {
         let dateComponents = DateComponents(year: 2000, month: 3, day: 21, hour: 1)
@@ -42,6 +42,13 @@ public class SwiftyHYGDB: NSObject {
         }
         
         completion(stars)
+    }
+    
+    public static func save(stars: [Star], to path: URL) throws {
+        let headerLine = "id,hip,hd,hr,gl,bf,proper,ra,dec,dist,pmra,pmdec,rv,mag,absmag,spect,ci"
+        let lines = [headerLine] + stars.flatMap({ $0.csvLine })
+        let fileString = lines.joined(separator: "\n")
+        try fileString.write(to: path, atomically: true, encoding: .utf8)
     }
 
 }
