@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
 [![License](https://img.shields.io/cocoapods/l/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftyHYGDB.svg?style=flat)](http://cocoapods.org/pods/SwiftyHYGDB)
+[![CI Status](http://img.shields.io/travis/Bersaelor/SwiftyHYGDB.svg?style=flat)](https://travis-ci.org/Bersaelor/SwiftyHYGDB)
 
 ## Example
 
