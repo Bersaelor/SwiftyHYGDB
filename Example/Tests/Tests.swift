@@ -3,7 +3,9 @@ import XCTest
 import SwiftyHYGDB
 
 class Tests: XCTestCase {
-    
+    let allStarFileName = "allStars.csv"
+    let starsCountInCSV = 119614
+
     override func setUp() {
         super.setUp()
 
@@ -14,23 +16,22 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoadingAndSavingEquals() {
+    func no_test_01_SaveStars() {
         let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv")
         XCTAssertNotNil(filePath, "Excpected hygdata_v3 to be bundled")
         
         let startLoading = Date()
-        SwiftyHYGDB.loadCSVData(from: filePath!) { (stars) in
-            print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath!)")
-            XCTAssertNotNil(stars, "Excpected hygdata_v3 to not be empty")
-            let starsCountInCSV = 119614
-            XCTAssertEqual(stars?.count, starsCountInCSV, "Excpected hygdata_v3 to have \(starsCountInCSV) stars")
-            
-            let allStarFileName = "allStars.csv"
-            self.saveStars(stars: stars, fileName: allStarFileName)
-            self.loadStars(fileName: allStarFileName, completion: { (star) in
-                XCTAssertEqual(stars?.count, starsCountInCSV, "Excpected \(allStarFileName) to have \(starsCountInCSV) stars too")
-            })
-        }
+        let stars = SwiftyHYGDB.loadCSVData(from: filePath!)
+        print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath!)")
+        XCTAssertNotNil(stars, "Excpected hygdata_v3 to not be empty")
+        XCTAssertEqual(stars?.count, starsCountInCSV, "Excpected hygdata_v3 to have \(starsCountInCSV) stars")
+        
+        self.saveStars(stars: stars, fileName: allStarFileName)
+    }
+    
+    func test_02_ReloadStars() {
+        let reloadedStars = self.loadStars(fileName: allStarFileName)
+        XCTAssertEqual(reloadedStars?.count, starsCountInCSV, "Expected \(allStarFileName) to have \(starsCountInCSV) stars too")
     }
     
     private func saveStars(stars: [Star]?, fileName: String, predicate: ((Star) -> Bool)? = nil ) {
@@ -45,27 +46,19 @@ class Tests: XCTestCase {
             try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
         } catch {
-            print("Error trying to saving visible stars: \( error )")
+            print("Error trying to saving stars: \( error )")
         }
     }
     
-    private func loadStars(fileName: String, completion: ([Star]?) -> Void) {
+    private func loadStars(fileName: String) -> [Star]? {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return nil }
 
         let startLoading = Date()
-        SwiftyHYGDB.loadCSVData(from: filePath.absoluteString) { (stars) in
-            print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
-            XCTAssertNotNil(stars, "Excpected \(fileName) to not be empty")
-            completion(stars)
-        }
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
+        let stars = SwiftyHYGDB.loadCSVData(from: filePath.absoluteString)
+        print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
+        XCTAssertNotNil(stars, "Expected \(fileName) to not be empty")
+        return stars
     }
     
 }

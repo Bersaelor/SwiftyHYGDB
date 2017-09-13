@@ -26,10 +26,10 @@ public class SwiftyHYGDB: NSObject {
     ///   - filePath: the path of the csv encoded HYG database file (see http://www.astronexus.com/hyg )
     ///   - precess: Bool to opt into preceeding positions
     ///   - completion: returns the loaded stars
-    public static func loadCSVData(from filePath: String, precess: Bool = false, completion: ([Star]?) -> Void) {
+    public static func loadCSVData(from filePath: String, precess: Bool = false) -> [Star]? {
         guard let fileHandle = fopen(filePath, "r") else {
-            completion(nil)
-            return
+            print("Failed to get file handle for \(filePath)")
+            return nil
         }
         defer { fclose(fileHandle) }
         
@@ -41,7 +41,7 @@ public class SwiftyHYGDB: NSObject {
             return star
         }
         
-        completion(stars)
+        return stars
     }
     
     public static func save(stars: [Star], to path: URL) throws {

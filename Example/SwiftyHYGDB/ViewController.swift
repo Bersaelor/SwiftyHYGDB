@@ -26,13 +26,12 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
             let startLoading = Date()
-            SwiftyHYGDB.loadCSVData(from: filePath) { (stars) in
-                self?.stars = stars
-                print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
-                DispatchQueue.main.async {
-                    self?.saveStars(fileName: "visibleStars.csv",
-                                    predicate: { $0.starData?.value.mag ?? Double.infinity < SwiftyHYGDB.maxVisibleMag })
-                }
+            let stars = SwiftyHYGDB.loadCSVData(from: filePath)
+            self?.stars = stars
+            print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
+            DispatchQueue.main.async {
+                self?.saveStars(fileName: "visibleStars.csv",
+                                predicate: { $0.starData?.value.mag ?? Double.infinity < SwiftyHYGDB.maxVisibleMag })
             }
         }
     }
