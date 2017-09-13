@@ -17,12 +17,16 @@ extension Star {
         result.append((starData.gl_id?.description ?? "").appending(","))
         result.append((starData.bayer_flamstedt ?? "").appending(","))
         result.append((starData.properName ?? "").appending(","))
-        result.append(String(format: "%f,%f,%f,%f,%f,",
-                             starData.right_ascension, starData.declination, starData.distance, starData.pmra, starData.pmdec))
-        result.append(starData.rv.flatMap({ String(format: "%f,", $0) }) ?? ",")
-        result.append(String(format: "%f,%f,", starData.mag, starData.absmag))
+        result.append(starData.right_ascension.compressedString.appending(","))
+        result.append(starData.declination.compressedString.appending(","))
+        result.append(starData.distance.compressedString.appending(","))
+        result.append(starData.pmra.compressedString.appending(","))
+        result.append(starData.pmdec.compressedString.appending(","))
+        result.append((starData.rv?.compressedString ?? "").appending(","))
+        result.append(starData.mag.compressedString.appending(","))
+        result.append(starData.absmag.compressedString.appending(","))
         result.append((starData.spectralType ?? "").appending(","))
-        result.append(starData.colorIndex.flatMap({ String(format: "%f", $0) }) ?? "")
+        result.append(starData.colorIndex?.compressedString ?? "")
         return result
     }
 }
