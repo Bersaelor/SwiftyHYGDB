@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Star {
+extension RadialStar {
     var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
         var result = "\(dbID),"
@@ -32,7 +32,7 @@ extension Star {
 }
 
 /// High performance initializer
-extension Star {
+extension RadialStar {
     init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
         var index = 0
         
@@ -55,11 +55,11 @@ extension Star {
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         
-        Star.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         
         self.dbID = dbID
-        self.normalizedAscension = Star.normalize(rightAscension: right_ascension)
-        self.normalizedDeclination = Star.normalize(declination: declination)
+        self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
+        self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 hip_id: hip_id,

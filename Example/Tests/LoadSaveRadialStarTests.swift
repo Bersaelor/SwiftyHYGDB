@@ -23,8 +23,8 @@ extension StarData {
     }
 }
 
-extension Star {
-    func isIdentical(star: Star) -> Bool {
+extension RadialStar {
+    func isIdentical(star: RadialStar) -> Bool {
         if dbID != star.dbID { return false }
         if abs(normalizedAscension - star.normalizedAscension) > 10 * Float.ulpOfOne { return false }
         if abs(normalizedDeclination - star.normalizedDeclination) > 10 * Float.ulpOfOne { return false }
@@ -40,7 +40,7 @@ extension Star {
 class LoadSaveRadialStarTests: XCTestCase {
     static let allStarFileName = "allStars.csv"
     let starsCountInCSV = 119614
-    var originalStars: [Star]?
+    var originalStars: [RadialStar]?
     
     override class func setUp() {
         super.setUp()
@@ -89,7 +89,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         }
     }
     
-    private func saveStars(stars: [Star]?, fileName: String, predicate: ((Star) -> Bool)? = nil ) {
+    private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
         guard let stars = stars,
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
@@ -105,7 +105,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         }
     }
     
-    private func loadStars(fileName: String) -> [Star]? {
+    private func loadStars(fileName: String) -> [RadialStar]? {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return nil }
 

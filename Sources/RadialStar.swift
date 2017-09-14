@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Star {
+public struct RadialStar {
     public static let ascensionRange: CGFloat = 24.0
     public static let declinationRange: CGFloat = 180
     
@@ -17,7 +17,7 @@ public struct Star {
     public let starData: Box<StarData>?
 }
 
-extension Star {
+extension RadialStar {
     
     public init? (row: String, advanceByYears: Float? = nil) {
         let fields = row.components(separatedBy: ",")
@@ -41,12 +41,12 @@ extension Star {
         }
 
         print("(\(right_ascension), \(declination)), pm: (\(pmra), \(pmdec))")
-        Star.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         print("-> (\(right_ascension), \(declination))")
 
         self.dbID = dbID
-        self.normalizedAscension = Star.normalize(rightAscension: right_ascension)
-        self.normalizedDeclination = Star.normalize(declination: declination)
+        self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
+        self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 hip_id: Int32(fields[1]),
@@ -70,8 +70,8 @@ extension Star {
     ///   - starData: full star data, optional
     public init (ascension: Float, declination: Float, dbID: Int32 = -1, starData: Box<StarData>? = nil) {
         self.dbID = dbID
-        self.normalizedAscension = Star.normalize(rightAscension: ascension)
-        self.normalizedDeclination = Star.normalize(declination: declination)
+        self.normalizedAscension = RadialStar.normalize(rightAscension: ascension)
+        self.normalizedDeclination = RadialStar.normalize(declination: declination)
         self.starData = starData
     }
     
@@ -96,11 +96,11 @@ extension Star {
         else if right_ascension > Float(ascensionRange) { right_ascension -= Float(ascensionRange) }
     }
     
-    public func starMoved(ascension: Float, declination: Float) -> Star {
-        let normalizedAsc = self.normalizedAscension + Star.normalize(rightAscension: ascension)
-        let normalizedDec = self.normalizedDeclination + Star.normalize(declination: declination)
-        return Star(ascension: Star.rightAscension(normalizedAscension: normalizedAsc),
-                    declination: Star.declination(normalizedDeclination: normalizedDec),
+    public func starMoved(ascension: Float, declination: Float) -> RadialStar {
+        let normalizedAsc = self.normalizedAscension + RadialStar.normalize(rightAscension: ascension)
+        let normalizedDec = self.normalizedDeclination + RadialStar.normalize(declination: declination)
+        return RadialStar(ascension: RadialStar.rightAscension(normalizedAscension: normalizedAsc),
+                    declination: RadialStar.declination(normalizedDeclination: normalizedDec),
                     dbID: self.dbID, starData: self.starData)
     }
     
@@ -110,7 +110,7 @@ extension Star {
     }
 }
 
-extension Star {
+extension RadialStar {
     public static func normalize(rightAscension: Float) -> Float {
         return rightAscension/Float(ascensionRange)
     }
@@ -128,13 +128,13 @@ extension Star {
 
 // swiftlint:enable variable_name
 
-public func == (lhs: Star, rhs: Star) -> Bool {
+public func == (lhs: RadialStar, rhs: RadialStar) -> Bool {
     return lhs.dbID == rhs.dbID
 }
 
-extension Star: Equatable {}
+extension RadialStar: Equatable {}
 
-extension Star: CustomDebugStringConvertible {
+extension RadialStar: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = starData?.value.distance ?? Double.infinity
         let magString = starData?.value.mag ?? Double.infinity

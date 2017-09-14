@@ -26,7 +26,7 @@ public class SwiftyHYGDB: NSObject {
     ///   - filePath: the path of the csv encoded HYG database file (see http://www.astronexus.com/hyg )
     ///   - precess: Bool to opt into preceeding positions
     ///   - completion: returns the loaded stars
-    public static func loadCSVData(from filePath: String, precess: Bool = false) -> [Star]? {
+    public static func loadCSVData(from filePath: String, precess: Bool = false) -> [RadialStar]? {
         guard let fileHandle = fopen(filePath, "r") else {
             print("Failed to get file handle for \(filePath)")
             return nil
@@ -35,16 +35,16 @@ public class SwiftyHYGDB: NSObject {
         
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
-        let stars = lines.dropFirst().flatMap { linePtr -> Star? in
+        let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
-            let star = Star(rowPtr :linePtr, advanceByYears: yearsToAdvance)
+            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
             return star
         }
         
         return stars
     }
     
-    public static func save(stars: [Star], to path: URL) throws {
+    public static func save(stars: [RadialStar], to path: URL) throws {
         let headerLine = "id,hip,hd,hr,gl,bf,proper,ra,dec,dist,pmra,pmdec,rv,mag,absmag,spect,ci"
         let lines = [headerLine] + stars.flatMap({ $0.csvLine })
         let fileString = lines.joined(separator: "\n")

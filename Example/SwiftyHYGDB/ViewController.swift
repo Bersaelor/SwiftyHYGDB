@@ -11,8 +11,8 @@ import SwiftyHYGDB
 
 class ViewController: UIViewController {
 
-    var stars: [Star]?
-    var visibleStars: [Star]?
+    var stars: [RadialStar]?
+    var visibleStars: [RadialStar]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func saveStars(fileName: String, predicate: ((Star) -> Bool)? = nil ) {
+    func saveStars(fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
         guard let stars = stars,
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
