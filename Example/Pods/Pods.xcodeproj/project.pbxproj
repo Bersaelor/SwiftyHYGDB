@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		015FE1E6871A096FE28A83AB6D6EDC34 /* Pods-SwiftyHYGDB_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6820A2066D02448117555EE185041987 /* Pods-SwiftyHYGDB_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0EF2674F122D6CC2444D200DA01DBB75 /* FloatingPoint+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB451413286A22EF4F98565353860B5 /* FloatingPoint+String.swift */; };
+		0EF2674F122D6CC2444D200DA01DBB75 /* FloatingPoint+CompressedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB451413286A22EF4F98565353860B5 /* FloatingPoint+CompressedString.swift */; };
 		17AEFA8A269D957E44F60FE73D41033F /* Star+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7478E4513C7FE039856AE07E3E65B2A1 /* Star+CSV.swift */; };
 		202D9A925FA7B3C4F1A43BA90A738A61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		2C8623336745C6975D39330CB0AC17D5 /* StarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F408A965D4CCBBC304E076296357301 /* StarData.swift */; };
@@ -69,7 +69,7 @@
 		C1F7BE4FDC0942ECEA2B58D627919957 /* Pods-SwiftyHYGDB_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftyHYGDB_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C6616A07FE51F39A3AF52C1878FECABA /* Pods-SwiftyHYGDB_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CB8C7698D9541EA8D64FF83DFB78250D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCB451413286A22EF4F98565353860B5 /* FloatingPoint+String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FloatingPoint+String.swift"; path = "Sources/FloatingPoint+String.swift"; sourceTree = "<group>"; };
+		CCB451413286A22EF4F98565353860B5 /* FloatingPoint+CompressedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FloatingPoint+CompressedString.swift"; path = "Sources/FloatingPoint+CompressedString.swift"; sourceTree = "<group>"; };
 		D343C602779A6503304ADF1EF2D92492 /* Pods-SwiftyHYGDB_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftyHYGDB_Tests-dummy.m"; sourceTree = "<group>"; };
 		DF3AF9F16F855100566980F44DB8F8FC /* Pods_SwiftyHYGDB_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E204402C385C28736C01DC4F691407CB /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyHYGDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF4E992BA0AAB8A41A18C01ADF1FA94 /* Box.swift */,
-				CCB451413286A22EF4F98565353860B5 /* FloatingPoint+String.swift */,
+				CCB451413286A22EF4F98565353860B5 /* FloatingPoint+CompressedString.swift */,
 				3446E697392CB51D10D4B1577A829524 /* LineGenerator.swift */,
 				5EFDDDA2052DCE982A0ADFD29E129FC0 /* Star.swift */,
 				43ACE226BA6472AB8AE3CB16009EAC91 /* Star+Codable.swift */,
@@ -343,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D14B917A11B542DEB662F1AE0475040 /* Box.swift in Sources */,
-				0EF2674F122D6CC2444D200DA01DBB75 /* FloatingPoint+String.swift in Sources */,
+				0EF2674F122D6CC2444D200DA01DBB75 /* FloatingPoint+CompressedString.swift in Sources */,
 				8DDF8279D2696E5D4644EE7BE02C77EE /* LineGenerator.swift in Sources */,
 				E7A38B21078646438CD9A81A01A627A6 /* Star+Codable.swift in Sources */,
 				17AEFA8A269D957E44F60FE73D41033F /* Star+CSV.swift in Sources */,
