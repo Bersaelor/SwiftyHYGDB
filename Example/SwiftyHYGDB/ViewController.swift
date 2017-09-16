@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
             let startLoading = Date()
-            let stars = SwiftyHYGDB.loadCSVData(from: filePath)
+            let stars = SwiftyHYGDB.loadCSVData(from: filePath, precess: true)
             self?.stars = stars
             print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
             DispatchQueue.main.async {

@@ -48,7 +48,7 @@ public class SwiftyHYGDB: NSObject {
     }
     
     public static func save(stars: [RadialStar], to path: URL) throws {
-        let headerLine = "id,hip,hd,hr,gl,bf,proper,ra,dec,dist,pmra,pmdec,rv,mag,absmag,spect,ci"
+        let headerLine = "id,hip,hd,hr,gl,bf,proper,ra,dec,dist,rv,mag,absmag,spect,ci"
         let lines = [headerLine] + stars.flatMap({ $0.csvLine })
         let fileString = lines.joined(separator: "\n")
         try fileString.write(to: path, atomically: true, encoding: .utf8)

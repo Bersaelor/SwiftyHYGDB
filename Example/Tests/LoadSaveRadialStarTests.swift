@@ -52,7 +52,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         super.setUp()
 
         let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv")!
-        originalStars = SwiftyHYGDB.loadCSVData(from: originalDBPath)
+        originalStars = SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
     }
     
     override func tearDown() {
@@ -85,6 +85,10 @@ class LoadSaveRadialStarTests: XCTestCase {
                 break
             }
         }
+    }
+    
+    func test_03_advanceByYears() {
+        // FIXME
     }
     
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
