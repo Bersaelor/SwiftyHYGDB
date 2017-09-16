@@ -13,8 +13,6 @@ extension StarData {
             && starData.bayer_flamstedt == self.bayer_flamstedt
             && starData.properName == self.properName
             && abs(starData.distance - self.distance) < Double.ulpOfOne
-            && abs(starData.pmra - self.pmra) < Double.ulpOfOne
-            && abs(starData.pmdec - self.pmdec) < Double.ulpOfOne
             && abs((starData.rv ?? 0) - (self.rv ?? 0)) < Double.ulpOfOne
             && abs(starData.mag - self.mag) < Double.ulpOfOne
             && abs(starData.absmag - self.absmag) < Double.ulpOfOne

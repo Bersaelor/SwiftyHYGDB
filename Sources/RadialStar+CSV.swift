@@ -20,8 +20,6 @@ extension RadialStar {
         result.append(starData.right_ascension.compressedString.appending(","))
         result.append(starData.declination.compressedString.appending(","))
         result.append(starData.distance.compressedString.appending(","))
-        result.append(starData.pmra.compressedString.appending(","))
-        result.append(starData.pmdec.compressedString.appending(","))
         result.append((starData.rv?.compressedString ?? "").appending(","))
         result.append(starData.mag.compressedString.appending(","))
         result.append(starData.absmag.compressedString.appending(","))
@@ -46,16 +44,18 @@ extension RadialStar {
         let properName = readString(at: &index, stringPtr: rowPtr)
         guard var right_ascension: Float = readNumber(at: &index, stringPtr: rowPtr),
             var declination: Float = readNumber(at: &index, stringPtr: rowPtr),
-            let dist: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let pmra: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let pmdec: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+            let dist: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let pmra: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
+        let pmdec: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
         guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
             let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         
-        RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        if let pmra = pmra, let pmdec = pmdec, let advanceByYears = advanceByYears {
+            RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        }
         
         self.dbID = dbID
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
@@ -68,7 +68,7 @@ extension RadialStar {
                                 gl_id: gl_id,
                                 bayer_flamstedt: bayerFlamstedt,
                                 properName: properName,
-                                distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
+                                distance: dist, rv: rv,
                                 mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
         self.starData = Box(starData)
     }

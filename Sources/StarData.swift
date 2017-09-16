@@ -19,14 +19,12 @@ public struct StarData: Codable {
     public let bayer_flamstedt: String?
     public let properName: String?
     public let distance: Double
-    public let pmra: Double
-    public let pmdec: Double
     public let rv: Double?
     public let mag: Double
     public let absmag: Double
     public let spectralType: String?
     public let colorIndex: Float?
-    
+
     enum CodingKeys: String, CodingKey {
         case right_ascension = "r"
         case declination     = "d"
@@ -37,8 +35,6 @@ public struct StarData: Codable {
         case bayer_flamstedt = "b"
         case properName      = "p"
         case distance        = "i"
-        case pmra            = "pr"
-        case pmdec           = "pd"
         case rv              = "v"
         case mag             = "m"
         case absmag          = "a"

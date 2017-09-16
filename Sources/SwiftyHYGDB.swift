@@ -35,9 +35,12 @@ public class SwiftyHYGDB: NSObject {
         
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
+        var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
             let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
+            count += 1
+            if star == nil { print("line \( count) wasn't read properly")}
             return star
         }
         
