@@ -12,6 +12,9 @@
 		17AEFA8A269D957E44F60FE73D41033F /* RadialStar+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7478E4513C7FE039856AE07E3E65B2A1 /* RadialStar+CSV.swift */; };
 		202D9A925FA7B3C4F1A43BA90A738A61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		2C8623336745C6975D39330CB0AC17D5 /* StarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F408A965D4CCBBC304E076296357301 /* StarData.swift */; };
+		747E3C441F6CAFB9007DF4CC /* Star3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E3C431F6CAFB9007DF4CC /* Star3D.swift */; };
+		747E3C461F6CB3BB007DF4CC /* Star3D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E3C451F6CB3BB007DF4CC /* Star3D+Codable.swift */; };
+		747E3C481F6CB499007DF4CC /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E3C471F6CB499007DF4CC /* Star3D+CVS.swift */; };
 		7F8B2AB0E1FD39321D2B75980074F6A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		8416EF792E2D4F90FC9B0C808E473A67 /* Pods-SwiftyHYGDB_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F0896EE15603432B0E7370C60EBD129A /* Pods-SwiftyHYGDB_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DDF8279D2696E5D4644EE7BE02C77EE /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3446E697392CB51D10D4B1577A829524 /* LineGenerator.swift */; };
@@ -57,6 +60,9 @@
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6820A2066D02448117555EE185041987 /* Pods-SwiftyHYGDB_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyHYGDB_Tests-umbrella.h"; sourceTree = "<group>"; };
 		7478E4513C7FE039856AE07E3E65B2A1 /* RadialStar+CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+CSV.swift"; path = "Sources/RadialStar+CSV.swift"; sourceTree = "<group>"; };
+		747E3C431F6CAFB9007DF4CC /* Star3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star3D.swift; sourceTree = "<group>"; };
+		747E3C451F6CB3BB007DF4CC /* Star3D+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star3D+Codable.swift"; sourceTree = "<group>"; };
+		747E3C471F6CB499007DF4CC /* Star3D+CVS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Star3D+CVS.swift"; sourceTree = "<group>"; };
 		82501046157CDAFE3A22D34E4A5331B2 /* Pods-SwiftyHYGDB_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		86769EE5750B00F7EE00504C4E302FCD /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8F408A965D4CCBBC304E076296357301 /* StarData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarData.swift; path = Sources/StarData.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				5EFDDDA2052DCE982A0ADFD29E129FC0 /* RadialStar.swift */,
 				43ACE226BA6472AB8AE3CB16009EAC91 /* RadialStar+Codable.swift */,
 				7478E4513C7FE039856AE07E3E65B2A1 /* RadialStar+CSV.swift */,
+				747E3C431F6CAFB9007DF4CC /* Star3D.swift */,
+				747E3C451F6CB3BB007DF4CC /* Star3D+Codable.swift */,
+				747E3C471F6CB499007DF4CC /* Star3D+CVS.swift */,
 				8F408A965D4CCBBC304E076296357301 /* StarData.swift */,
 				BD737E19A926B9E46E3284A677E666C3 /* SwiftyHYGDB.swift */,
 				D4C84C351E50162FAA058419606D7ED4 /* Support Files */,
@@ -346,11 +355,14 @@
 				0EF2674F122D6CC2444D200DA01DBB75 /* FloatingPoint+CompressedString.swift in Sources */,
 				8DDF8279D2696E5D4644EE7BE02C77EE /* LineGenerator.swift in Sources */,
 				E7A38B21078646438CD9A81A01A627A6 /* RadialStar+Codable.swift in Sources */,
+				747E3C441F6CAFB9007DF4CC /* Star3D.swift in Sources */,
+				747E3C461F6CB3BB007DF4CC /* Star3D+Codable.swift in Sources */,
 				17AEFA8A269D957E44F60FE73D41033F /* RadialStar+CSV.swift in Sources */,
 				9EBC273DD0FC3A49EB195522E5175B6C /* RadialStar.swift in Sources */,
 				2C8623336745C6975D39330CB0AC17D5 /* StarData.swift in Sources */,
 				F3DE141463A427E38720E6B874AB18BE /* SwiftyHYGDB-dummy.m in Sources */,
 				AF76231B03856B54835C548BAB4F88DF /* SwiftyHYGDB.swift in Sources */,
+				747E3C481F6CB499007DF4CC /* Star3D+CVS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

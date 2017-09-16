@@ -39,7 +39,8 @@ class LoadSaveRadialStarTests: XCTestCase {
     static let allStarFileName = "allStars.csv"
     let starsCountInCSV = 119614
     var originalStars: [RadialStar]?
-    
+    var originalStar3Ds: [Star3D]?
+
     override class func setUp() {
         super.setUp()
         
@@ -51,8 +52,10 @@ class LoadSaveRadialStarTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        
         let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv")!
         originalStars = SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
+        originalStar3Ds = SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
     }
     
     override func tearDown() {
@@ -60,7 +63,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_01_SaveStars() {
+    func test_01_SaveRadialStars() {
         guard let stars = originalStars else { return }
         XCTAssertEqual(stars.count, starsCountInCSV, "Excpected hygdata_v3 to have \(starsCountInCSV) stars")
         self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStarFileName)
@@ -70,8 +73,8 @@ class LoadSaveRadialStarTests: XCTestCase {
         XCTAssertTrue(FileManager().fileExists(atPath: filePath.path), "File should exist at \(filePath)")
     }
     
-    func test_02_ReloadStars() {
-        let reloadedStars = self.loadStars(fileName: LoadSaveRadialStarTests.allStarFileName)
+    func test_02_ReloadRadialStars() {
+        let reloadedStars: [RadialStar]? = self.loadStars(fileName: LoadSaveRadialStarTests.allStarFileName)
         XCTAssertEqual(reloadedStars?.count, starsCountInCSV,
                        "Expected \(LoadSaveRadialStarTests.allStarFileName) to have \(starsCountInCSV) stars too")
         guard let originalStars = originalStars else {
@@ -87,11 +90,49 @@ class LoadSaveRadialStarTests: XCTestCase {
         }
     }
     
+    func test_Save3DStars() {
+        guard let stars = originalStar3Ds else { return }
+        XCTAssertEqual(stars.count, starsCountInCSV, "Expected hygdata_v3 to have \(starsCountInCSV) stars")
+        self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStarFileName)
+        
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(LoadSaveRadialStarTests.allStarFileName) else { return }
+        XCTAssertTrue(FileManager().fileExists(atPath: filePath.path), "File should exist at \(filePath)")
+    }
+    
+    func test_Reload3DStars() {
+        // FIXME
+    }
+    
     func test_03_advanceByYears() {
         // FIXME
     }
     
+    func test_04_RadialStarCoding() {
+        // FIXME
+    }
+
+    func test_04_Star3DCoding() {
+        // FIXME
+    }
+    
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
+        guard let stars = stars,
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
+        
+        print("Writing \(stars.count) stars to file \( filePath )")
+        do {
+            let startLoading = Date()
+            let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
+            try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
+            print("Writing  took \( Date().timeIntervalSince(startLoading) )")
+        } catch {
+            print("Error trying to saving stars: \( error )")
+        }
+    }
+    
+    private func saveStars(stars: [Star3D]?, fileName: String, predicate: ((Star3D) -> Bool)? = nil ) {
         guard let stars = stars,
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
@@ -112,10 +153,20 @@ class LoadSaveRadialStarTests: XCTestCase {
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return nil }
 
         let startLoading = Date()
-        let stars = SwiftyHYGDB.loadCSVData(from: filePath.path)
+        let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath.path)
         print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
         XCTAssertNotNil(stars, "Expected \(fileName) to not be empty")
         return stars
     }
-    
+
+    private func loadStars(fileName: String) -> [Star3D]? {
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return nil }
+        
+        let startLoading = Date()
+        let stars: [Star3D]? = SwiftyHYGDB.loadCSVData(from: filePath.path)
+        print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
+        XCTAssertNotNil(stars, "Expected \(fileName) to not be empty")
+        return stars
+    }
 }
