@@ -38,10 +38,7 @@ public class SwiftyHYGDB: NSObject {
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
-            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
-            count += 1
-            if star == nil { print("line \( count) wasn't read properly")}
-            return star
+            return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
         }
         
         return stars
@@ -68,10 +65,7 @@ public class SwiftyHYGDB: NSObject {
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> Star3D? in
             defer { free(linePtr) }
-            let star = Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance)
-            count += 1
-            if star == nil { print("line \( count) wasn't read properly")}
-            return star
+            return Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance)
         }
         
         return stars

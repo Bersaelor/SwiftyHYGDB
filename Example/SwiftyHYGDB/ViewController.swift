@@ -22,8 +22,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    @IBAction func loadDBTapped(_ sender: Any) {
         guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv") else { return }
-        
         DispatchQueue.global(qos: .background).async { [weak self] in
             let startLoading = Date()
             let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath, precess: true)

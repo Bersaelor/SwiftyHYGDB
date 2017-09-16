@@ -8,9 +8,6 @@
 import Foundation
 
 public struct Star3D {
-    public static let ascensionRange: CGFloat = 24.0
-    public static let declinationRange: CGFloat = 180
-    
     public let dbID: Int32
     public let x: Float
     public let y: Float

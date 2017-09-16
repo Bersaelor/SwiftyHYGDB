@@ -42,3 +42,23 @@ public struct StarData: Codable {
         case colorIndex      = "c"
     }
 }
+
+extension StarData {
+    public var csvLine: String {
+        var result = (hip_id?.description ?? "").appending(",")
+        result.append((hd_id?.description ?? "").appending(","))
+        result.append((hr_id?.description ?? "").appending(","))
+        result.append((gl_id?.description ?? "").appending(","))
+        result.append((bayer_flamstedt ?? "").appending(","))
+        result.append((properName ?? "").appending(","))
+        result.append(right_ascension.compressedString.appending(","))
+        result.append(declination.compressedString.appending(","))
+        result.append(distance.compressedString.appending(","))
+        result.append((rv?.compressedString ?? "").appending(","))
+        result.append(mag.compressedString.appending(","))
+        result.append(absmag.compressedString.appending(","))
+        result.append((spectralType ?? "").appending(","))
+        result.append((colorIndex?.compressedString ?? "").appending(","))
+        return result
+    }
+}

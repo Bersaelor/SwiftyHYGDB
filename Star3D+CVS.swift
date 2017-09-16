@@ -13,20 +13,7 @@ extension Star3D: CSVWritable {
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
         var result = "\(dbID),"
-        result.append((starData.hip_id?.description ?? "").appending(","))
-        result.append((starData.hd_id?.description ?? "").appending(","))
-        result.append((starData.hr_id?.description ?? "").appending(","))
-        result.append((starData.gl_id?.description ?? "").appending(","))
-        result.append((starData.bayer_flamstedt ?? "").appending(","))
-        result.append((starData.properName ?? "").appending(","))
-        result.append(starData.right_ascension.compressedString.appending(","))
-        result.append(starData.declination.compressedString.appending(","))
-        result.append(starData.distance.compressedString.appending(","))
-        result.append((starData.rv?.compressedString ?? "").appending(","))
-        result.append(starData.mag.compressedString.appending(","))
-        result.append(starData.absmag.compressedString.appending(","))
-        result.append((starData.spectralType ?? "").appending(","))
-        result.append((starData.colorIndex?.compressedString ?? "").appending(","))
+        result.append(starData.csvLine)
         result.append((x.compressedString).appending(","))
         result.append((y.compressedString).appending(","))
         result.append((z.compressedString).appending(","))

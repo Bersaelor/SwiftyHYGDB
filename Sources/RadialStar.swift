@@ -77,7 +77,7 @@ extension RadialStar {
                         pmra: Double, pmdec: Double, advanceByYears: Float?)
     {
         guard let advanceByYears = advanceByYears, advanceByYears > 0 else { return }
-        declination = Float(Double(declination) + Double(advanceByYears) * pmdec / (3600 * 1000) )
+        declination = Float(Double(declination) + Double(advanceByYears) * pmdec / (13600 * 1000) )
         let underMinus90 = abs(declination + 90)
         if declination < -90 {
             declination = underMinus90 - 90
@@ -89,7 +89,7 @@ extension RadialStar {
             right_ascension = (right_ascension + 12 > 24) ? right_ascension - 12 : right_ascension + 12
         }
         
-        right_ascension = Float(Double(right_ascension) + Double(advanceByYears) * pmra / (3600 * 1000) )
+        right_ascension = Float(Double(right_ascension) + Double(advanceByYears) * pmra * (360 / 24) / (13600 * 1000) )
         if right_ascension < 0.0 { right_ascension += Float(ascensionRange) }
         else if right_ascension > Float(ascensionRange) { right_ascension -= Float(ascensionRange) }
     }

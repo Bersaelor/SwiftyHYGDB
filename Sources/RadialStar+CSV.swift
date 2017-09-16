@@ -13,20 +13,7 @@ extension RadialStar: CSVWritable {
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
         var result = "\(dbID),"
-        result.append((starData.hip_id?.description ?? "").appending(","))
-        result.append((starData.hd_id?.description ?? "").appending(","))
-        result.append((starData.hr_id?.description ?? "").appending(","))
-        result.append((starData.gl_id?.description ?? "").appending(","))
-        result.append((starData.bayer_flamstedt ?? "").appending(","))
-        result.append((starData.properName ?? "").appending(","))
-        result.append(starData.right_ascension.compressedString.appending(","))
-        result.append(starData.declination.compressedString.appending(","))
-        result.append(starData.distance.compressedString.appending(","))
-        result.append((starData.rv?.compressedString ?? "").appending(","))
-        result.append(starData.mag.compressedString.appending(","))
-        result.append(starData.absmag.compressedString.appending(","))
-        result.append((starData.spectralType ?? "").appending(","))
-        result.append(starData.colorIndex?.compressedString ?? "")
+        result.append(starData.csvLine)
         return result
     }
 }
