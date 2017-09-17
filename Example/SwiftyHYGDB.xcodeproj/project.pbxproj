@@ -43,6 +43,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSaveRadialStarTests.swift; sourceTree = "<group>"; };
 		7177EE9E1F65DA2C0046B3AB /* hygdata_v3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = hygdata_v3.csv; sourceTree = "<group>"; };
+		717B37221F6ECB8E00861B51 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		71BFB6841F6D742B00EF7C76 /* Testhelper+StarIdentical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Testhelper+StarIdentical.swift"; sourceTree = "<group>"; };
 		7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftyHYGDB.podspec; path = ../SwiftyHYGDB.podspec; sourceTree = "<group>"; };
 		92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +159,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				717B37221F6ECB8E00861B51 /* .travis.yml */,
 				7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */,
 				C24D4E181376F0E4ACBF88E1 /* README.md */,
 				DE6210ACA45E3131BDE3226F /* LICENSE */,

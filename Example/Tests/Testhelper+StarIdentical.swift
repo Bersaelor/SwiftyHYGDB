@@ -9,10 +9,15 @@
 import Foundation
 import SwiftyHYGDB
 
+let accuracy: Float = {
+    if #available(iOS 11, *) { return Float.ulpOfOne
+    } else { return 35 * Float.ulpOfOne }
+}()
+
 extension StarData {
     func isIdentical(starData: StarData) -> Bool {
-        return abs(starData.right_ascension - self.right_ascension) < Float.ulpOfOne
-            && abs(starData.declination - self.declination) < Float.ulpOfOne
+        return abs(starData.right_ascension - self.right_ascension) < accuracy
+            && abs(starData.declination - self.declination) < accuracy
             && starData.hip_id == self.hip_id
             && starData.hd_id == self.hd_id
             && starData.hr_id == self.hr_id
@@ -45,9 +50,9 @@ extension RadialStar {
 extension Star3D {
     func isIdentical(star: Star3D) -> Bool {
         if dbID != star.dbID { return false }
-        if abs(x - star.x) > 10 * Float.ulpOfOne { return false }
-        if abs(y - star.y) > 10 * Float.ulpOfOne { return false }
-        if abs(z - star.z) > 10 * Float.ulpOfOne { return false }
+        if abs(x - star.x) > 15 * accuracy { return false }
+        if abs(y - star.y) > 15 * accuracy { return false }
+        if abs(z - star.z) > 15 * accuracy { return false }
 
         guard let starData = self.starData?.value, let otherStarData = star.starData?.value else {
             return self.starData?.value == nil && star.starData?.value == nil
