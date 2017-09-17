@@ -118,7 +118,7 @@ class LoadSaveRadialStarTests: XCTestCase {
             for (offset, star) in decodedStars.enumerated() {
                 let originalStar = stars[offset]
                 if !star.isIdentical(star: originalStar) {
-                    XCTFail("Reloaded Star: \(star) should have been equal: \(originalStars[offset])")
+                    XCTFail("Reloaded Star: \(star) should have been equal: \(originalStar)")
                     break
                 }
             }
@@ -140,7 +140,7 @@ class LoadSaveRadialStarTests: XCTestCase {
             for (offset, star) in decodedStars.enumerated() {
                 let originalStar = stars[offset]
                 if !star.isIdentical(star: originalStar) {
-                    XCTFail("Reloaded Star: \(star) should have been equal: \(originalStars[offset])")
+                    XCTFail("Reloaded Star: \(star) should have been equal: \(originalStar)")
                     break
                 }
             }
