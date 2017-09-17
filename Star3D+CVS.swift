@@ -23,7 +23,7 @@ extension Star3D: CSVWritable {
 
 /// High performance initializer
 extension Star3D {
-    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
+    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Double? = nil) {
         var index = 0
         
         guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
@@ -44,12 +44,20 @@ extension Star3D {
             let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
-        guard let x: Float = readNumber(at: &index, stringPtr: rowPtr),
-            let y: Float = readNumber(at: &index, stringPtr: rowPtr),
-            let z: Float = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        guard var x: Float = readNumber(at: &index, stringPtr: rowPtr),
+            var y: Float = readNumber(at: &index, stringPtr: rowPtr),
+            var z: Float = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
 
-        if let pmra = pmra, let pmdec = pmdec, let advanceByYears = advanceByYears {
-            RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        if let pmra = pmra, let pmdec = pmdec, let advanceByYears = advanceByYears,
+            let vx: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let vy: Double = readNumber(at: &index, stringPtr: rowPtr),
+            let vz: Double = readNumber(at: &index, stringPtr: rowPtr) {
+            
+            RadialStar.precess(right_ascension: &right_ascension, declination: &declination,
+                               pmra: pmra, pmdec: pmdec, advanceByYears: Float(advanceByYears))
+            x += Float(advanceByYears * vx)
+            y += Float(advanceByYears * vy)
+            z += Float(advanceByYears * vz)
         }
         
         self.dbID = dbID

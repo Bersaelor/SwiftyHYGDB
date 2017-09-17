@@ -17,7 +17,7 @@ public struct Star3D {
 
 extension Star3D {
     
-    public init? (row: String, advanceByYears: Float? = nil) {
+    public init? (row: String, advanceByYears: Double? = nil) {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
@@ -26,8 +26,8 @@ extension Star3D {
         }
         
         guard let dbID = Int32(fields[0]),
-            let right_ascension = Float(fields[7]),
-            let declination = Float(fields[8]),
+            var right_ascension = Float(fields[7]),
+            var declination = Float(fields[8]),
             let dist = Double(fields[9]),
             let mag = Double(fields[13]),
             let absmag = Double(fields[14]),
@@ -39,10 +39,13 @@ extension Star3D {
                 return nil
         }
         
-        if let advanceByYears = advanceByYears, let vx = Float(fields[19]), let vy = Float(fields[20]), let vz = Float(fields[21]) {
-            x += advanceByYears * vx
-            y += advanceByYears * vy
-            z += advanceByYears * vz
+        if let advanceByYears = advanceByYears, let pmra = Double(fields[10]), let pmdec = Double(fields[11]),
+            let vx = Double(fields[19]), let vy = Double(fields[20]), let vz = Double(fields[21])
+        {
+            RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: Float(advanceByYears))
+            x += Float(advanceByYears * vx)
+            y += Float(advanceByYears * vy)
+            z += Float(advanceByYears * vz)
         }
         
         self.dbID = dbID
@@ -84,6 +87,9 @@ extension Star3D {
         return Star3D(dbID: self.dbID, x: newX, y: newY, z: newZ, starData: self.starData)
     }
     
+    public var starPoint: Point3D {
+        return Point3D(x: self.x, y: self.y, z: self.z)
+    }
 }
 
 // swiftlint:enable variable_name

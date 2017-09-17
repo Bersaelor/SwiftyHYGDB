@@ -99,16 +99,83 @@ class LoadSaveRadialStarTests: XCTestCase {
             XCTAssertEqual(dec, Float(expectedDec), accuracy: Float.ulpOfOne,
                            "Dec precessed by \(yearsToAdvance)y should be correct")
         } else {
-            XCTFail("Failed to load star dbID 2 in row 3")
+            XCTFail("Failed to load star dbID 2 in row 7")
         }
     }
     
     func test_07_RadialStarCoding() {
-        // FIXME
+        guard let originalStars = originalStars else {
+            XCTFail("Failed to load original Stars")
+            return
+        }
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+        let stars = Array(originalStars[10...20])
+        do {
+            let data = try encoder.encode(stars)
+            XCTAssertGreaterThan(data.count, 10, "Data should contain")
+            let decodedStars = try decoder.decode([RadialStar].self, from: data)
+            for (offset, star) in decodedStars.enumerated() {
+                let originalStar = stars[offset]
+                if !star.isIdentical(star: originalStar) {
+                    XCTFail("Reloaded Star:\n \(star)\n should have been equal:\n \(originalStars[offset])")
+                    break
+                }
+            }
+        } catch { XCTFail("Due to error \(error)") }
     }
 
     func test_08_Star3DCoding() {
-        // FIXME
+        guard let originalStars = originalStar3Ds else {
+            XCTFail("Failed to load original Stars")
+            return
+        }
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+        let stars = Array(originalStars[10...20])
+        do {
+            let data = try encoder.encode(stars)
+            XCTAssertGreaterThan(data.count, 10, "Data should contain")
+            let decodedStars = try decoder.decode([Star3D].self, from: data)
+            for (offset, star) in decodedStars.enumerated() {
+                let originalStar = stars[offset]
+                if !star.isIdentical(star: originalStar) {
+                    XCTFail("Reloaded Star:\n \(star)\n should have been equal:\n \(originalStars[offset])")
+                    break
+                }
+            }
+        } catch { XCTFail("Due to error \(error)") }
+    }
+    
+    func test_09_Star3DMovement() {
+        guard let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"),
+            let fileHandle = fopen(originalDBPath, "r") else {
+                XCTFail("Failed to get file handle for hygdata_v3")
+                return
+        }
+        defer { fclose(fileHandle) }
+        
+        let yearsToAdvance: Double = 100
+        let initialPoint = Point3D(x: 54.367897, y: 0.020886, z: 19.827115)
+        let perYearParsecs = Point3D(x: Float(yearsToAdvance * 0.00001932),
+                                     y: Float(yearsToAdvance * -0.00005838),
+                                     z: Float(yearsToAdvance * -0.00005292))
+        let expectedPoint = initialPoint +  perYearParsecs
+        let lines = lineIteratorC(file: fileHandle)
+        var count = 0
+        if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
+            defer { free(linePtr) }
+            guard let star = Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance) else {
+                XCTFail("failed to load star from rowPtr")
+                return
+            }
+            for (coo, expected) in [(star.x, expectedPoint.x), (star.y, expectedPoint.y), (star.z, expectedPoint.z)] {
+                XCTAssertEqual(coo, expected, accuracy: Float.ulpOfOne,
+                               "Pos. after \(yearsToAdvance)y should be correct")
+            }
+        } else {
+            XCTFail("Failed to load star dbID 2 in row 3")
+        }
     }
     
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
@@ -122,9 +189,7 @@ class LoadSaveRadialStarTests: XCTestCase {
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
             try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
-        } catch {
-            print("Error trying to saving stars: \( error )")
-        }
+        } catch { print("Error trying to saving stars: \( error )") }
     }
     
     private func saveStars(stars: [Star3D]?, fileName: String, predicate: ((Star3D) -> Bool)? = nil ) {
@@ -138,9 +203,7 @@ class LoadSaveRadialStarTests: XCTestCase {
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
             try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
-        } catch {
-            print("Error trying to saving stars: \( error )")
-        }
+        } catch { print("Error trying to saving stars: \( error )") }
     }
     
     private func loadStars(fileName: String) -> [RadialStar]? {

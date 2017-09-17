@@ -60,7 +60,7 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
-        let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
+        let yearsToAdvance = precess ? Double(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> Star3D? in
