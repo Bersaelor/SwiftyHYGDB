@@ -7,32 +7,19 @@
 
 import Foundation
 
-extension Star {
-    var csvLine: String? {
+extension RadialStar: CSVWritable {
+    public static let headerLine = "id,hip,hd,hr,gl,bf,proper,ra,dec,dist,rv,mag,absmag,spect,ci"
+
+    public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
         var result = "\(dbID),"
-        result.append((starData.hip_id?.description ?? "").appending(","))
-        result.append((starData.hd_id?.description ?? "").appending(","))
-        result.append((starData.hr_id?.description ?? "").appending(","))
-        result.append((starData.gl_id?.description ?? "").appending(","))
-        result.append((starData.bayer_flamstedt ?? "").appending(","))
-        result.append((starData.properName ?? "").appending(","))
-        result.append(starData.right_ascension.compressedString.appending(","))
-        result.append(starData.declination.compressedString.appending(","))
-        result.append(starData.distance.compressedString.appending(","))
-        result.append(starData.pmra.compressedString.appending(","))
-        result.append(starData.pmdec.compressedString.appending(","))
-        result.append((starData.rv?.compressedString ?? "").appending(","))
-        result.append(starData.mag.compressedString.appending(","))
-        result.append(starData.absmag.compressedString.appending(","))
-        result.append((starData.spectralType ?? "").appending(","))
-        result.append(starData.colorIndex?.compressedString ?? "")
+        result.append(starData.csvLine)
         return result
     }
 }
 
 /// High performance initializer
-extension Star {
+extension RadialStar {
     init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
         var index = 0
         
@@ -46,20 +33,22 @@ extension Star {
         let properName = readString(at: &index, stringPtr: rowPtr)
         guard var right_ascension: Float = readNumber(at: &index, stringPtr: rowPtr),
             var declination: Float = readNumber(at: &index, stringPtr: rowPtr),
-            let dist: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let pmra: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let pmdec: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+            let dist: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        let pmra: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
+        let pmdec: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
         guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
             let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         
-        Star.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        if let pmra = pmra, let pmdec = pmdec, let advanceByYears = advanceByYears {
+            RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
+        }
         
         self.dbID = dbID
-        self.normalizedAscension = Star.normalize(rightAscension: right_ascension)
-        self.normalizedDeclination = Star.normalize(declination: declination)
+        self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
+        self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 hip_id: hip_id,
@@ -68,7 +57,7 @@ extension Star {
                                 gl_id: gl_id,
                                 bayer_flamstedt: bayerFlamstedt,
                                 properName: properName,
-                                distance: dist, pmra: pmra, pmdec: pmdec, rv: rv,
+                                distance: dist, rv: rv,
                                 mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
         self.starData = Box(starData)
     }
@@ -76,7 +65,7 @@ extension Star {
 
 // MARK: CSV Helper Methods
 
-private func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int {
+func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<Int8>) -> Int {
     var newIndex = index
     while stringPtr[newIndex] != 0 && stringPtr[newIndex] != 44 { newIndex += 1 }
     if stringPtr[newIndex] != 0 { //if not at end of file, jump over comma
@@ -85,7 +74,7 @@ private func indexOfCommaOrEnd(at index: Int, stringPtr: UnsafeMutablePointer<In
     return newIndex
 }
 
-private func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> String? {
+func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8>) -> String? {
     let startIndex = index
     index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
     
@@ -99,7 +88,7 @@ private func readString(at index: inout Int, stringPtr: UnsafeMutablePointer<Int
     return nil
 }
 
-private protocol HasCFormatterString {
+protocol HasCFormatterString {
     static var cFormatString: [Int8] { get }
     static var initialValue: Self { get }
 }
@@ -119,7 +108,7 @@ extension Double: HasCFormatterString {
     static let initialValue: Double = 0.0
 }
 
-private func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
+func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMutablePointer<Int8> ) -> T? {
     let startIndex = index
     index = indexOfCommaOrEnd(at: index, stringPtr: stringPtr)
     

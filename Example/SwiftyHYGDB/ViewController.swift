@@ -11,8 +11,8 @@ import SwiftyHYGDB
 
 class ViewController: UIViewController {
 
-    var stars: [Star]?
-    var visibleStars: [Star]?
+    var stars: [RadialStar]?
+    var visibleStars: [RadialStar]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    @IBAction func loadDBTapped(_ sender: Any) {
         guard let filePath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv") else { return }
-        
         DispatchQueue.global(qos: .background).async { [weak self] in
             let startLoading = Date()
-            let stars = SwiftyHYGDB.loadCSVData(from: filePath)
+            let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath, precess: true)
             self?.stars = stars
             print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
             DispatchQueue.main.async {
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func saveStars(fileName: String, predicate: ((Star) -> Bool)? = nil ) {
+    func saveStars(fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
         guard let stars = stars,
             let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
             let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }

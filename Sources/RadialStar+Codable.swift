@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Star: Codable {
+extension RadialStar: Codable {
     private enum CodingKeys: String, CodingKey {
         case dbID                   = "d"
         case normalizedAscension    = "nA"
