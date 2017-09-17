@@ -1,5 +1,5 @@
 PODS:
-  - SwiftyHYGDB (0.2.0)
+  - SwiftyHYGDB (0.5.0)
 
 DEPENDENCIES:
   - SwiftyHYGDB (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SwiftyHYGDB: 536affd743ba07cafc4d25ec4efee538caf97749
+  SwiftyHYGDB: 6620a5e71eca6cb8fd8c57a9c321d7fddc54578a
 
 PODFILE CHECKSUM: 82f5a4733a4b586f0e94809df3471cd4cfddd89f
 
