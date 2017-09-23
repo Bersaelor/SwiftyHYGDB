@@ -8,26 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		015FE1E6871A096FE28A83AB6D6EDC34 /* Pods-SwiftyHYGDB_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6820A2066D02448117555EE185041987 /* Pods-SwiftyHYGDB_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A518354C618CA34420E65C2E38E6402 /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F946F427DCE50E02AA154A29F1FFB7 /* Star3D+CVS.swift */; };
-		107B4D15E7A934A8537CB3C488762FB6 /* RadialStar+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB64A9ED5FD43EC4A826E1B948E9CC2 /* RadialStar+CSV.swift */; };
-		1CC4B010B70F4FA1AEDDB2FB667CC7AC /* SwiftyHYGDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFAEE76165D2BDE98103E83760BD02 /* SwiftyHYGDB.swift */; };
+		0BE02DD132CC1BC0EAB090D30A4D9753 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A5BF75EE7A4C8FAF1926F72E6DB0F /* Box.swift */; };
 		202D9A925FA7B3C4F1A43BA90A738A61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		452AA98C21EA07ED21D0559F64F7BBF6 /* FloatingPoint+CompressedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5168B2FBA0B5F6BDDC534591CD482 /* FloatingPoint+CompressedString.swift */; };
-		4563B8C6DDEF49B374774CBFE24F1016 /* Star3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBF406B70E5505907B75BA6C371284 /* Star3D.swift */; };
-		5F443CFED6C0E3D763F123E3E022FCF7 /* Star3D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D36BA38AD0293D383711026C8C4F0 /* Star3D+Codable.swift */; };
-		79F0838BBD919DB4714F35D1E3884CED /* SwiftyHYGDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE60A9D5D73B5F17F59074E009E5CB5 /* SwiftyHYGDB-dummy.m */; };
+		240A4430BC6D71340C88296F548D7332 /* Star3D+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895AA05609FF6A7A3F39F721B397DEA9 /* Star3D+Codable.swift */; };
+		33E79909003013362E566891C7619D2F /* RadialStar+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37F548D48F466AD011B476313F2EC7 /* RadialStar+Codable.swift */; };
+		3F1306093796BE7DCA94463568AAE1DD /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFF07F69BA0C0FAA387DA5D756DBD9D /* Star3D+CVS.swift */; };
+		5E2C0E615F51CF57FB5390359BF27ECC /* RadialStar+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F568C4D2F9BF306294908D32DFDE2B /* RadialStar+CSV.swift */; };
+		69C7BE4C1F21A64C5E0C18B43445532F /* Star3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD31671BF9A137217945E005D559086F /* Star3D.swift */; };
+		78203388ADB34B896349D357A0710D5A /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54E333A3C6F71F89217F587BB9A455 /* Point3D.swift */; };
+		79F0838BBD919DB4714F35D1E3884CED /* SwiftyHYGDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF27EBA52D6BAE2C4D2C1A6E03E4E846 /* SwiftyHYGDB-dummy.m */; };
 		7F8B2AB0E1FD39321D2B75980074F6A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		8416EF792E2D4F90FC9B0C808E473A67 /* Pods-SwiftyHYGDB_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F0896EE15603432B0E7370C60EBD129A /* Pods-SwiftyHYGDB_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86ED361D9AC7CB21241AA5281CA1886F /* RadialStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5992E6AEA3BAA4B944902DF6B38AF2B2 /* RadialStar.swift */; };
-		9EE4D5EAF511C3EB1E64A461AFFEF476 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2AF7DD9A9E5DA7A09DD707C5C44BD /* Box.swift */; };
-		A3E9D83E1A6FAD2B5DF3784E7CFC1017 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E098EEA6B535A0E8E83B69A15262D9 /* LineGenerator.swift */; };
-		B1B7093D7EDA45E12A1E9FF15D69DBA7 /* RadialStar+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09814A4C03557B76F77A88B549B86E5 /* RadialStar+Codable.swift */; };
-		BFF6B1BBDCB2D44AEE055EBADF181FFF /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEBDE89598DC2D4249279A0833B381F /* Point3D.swift */; };
+		9B2D02E4BC983662801ABEEE50FA3407 /* SwiftyHYGDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E2F725B35FF5CEF52B9A2F054E7D0 /* SwiftyHYGDB.swift */; };
+		BD2EDCF20C0FA82F7646C531C220A32B /* RadialStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19147AA14EC8898E21EFBAD12A0BF3 /* RadialStar.swift */; };
 		C6BF359B88DB0A6D6F60C1926BEF62CB /* Pods-SwiftyHYGDB_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C74DE9DF15EFCE84ACA2FFBC42481B8 /* Pods-SwiftyHYGDB_Example-dummy.m */; };
-		C82E4528C6E34127C5BF35F65A959746 /* SwiftyHYGDB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D169A8F640FB578E9568D499A27A7B3B /* SwiftyHYGDB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E176AD933B7716B6611911B010CF3038 /* StarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF055C6620E34305330821CA82E3D2E0 /* StarData.swift */; };
+		C82E4528C6E34127C5BF35F65A959746 /* SwiftyHYGDB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B57B38A27F76EDBED9671B4A6885090 /* SwiftyHYGDB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8777B164481DE16DB740B7E534D56E7 /* LineGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1701F07C9B328CAA0ED1598A53E9C91F /* LineGenerator.swift */; };
 		F30FC5A7C8C4D79124FFCBEE26B266E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		F3DD71A2DB68D02CF4DF875D47389B65 /* Pods-SwiftyHYGDB_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D343C602779A6503304ADF1EF2D92492 /* Pods-SwiftyHYGDB_Tests-dummy.m */; };
+		F5AA951115A524FA9E4A1214454F4EC4 /* FloatingPoint+CompressedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343CC3A459CE999556092EB979B9478 /* FloatingPoint+CompressedString.swift */; };
+		FC1675AF49E23B0E8E00E74532047828 /* StarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36100628B5702BE1D2AF75BACFC14642 /* StarData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,48 +42,48 @@
 
 /* Begin PBXFileReference section */
 		0166C7C356BC4A6E947E821429D38AA2 /* Pods-SwiftyHYGDB_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftyHYGDB_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		02F568C4D2F9BF306294908D32DFDE2B /* RadialStar+CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+CSV.swift"; path = "Sources/SwiftyHYGDB/RadialStar+CSV.swift"; sourceTree = "<group>"; };
+		0343CC3A459CE999556092EB979B9478 /* FloatingPoint+CompressedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FloatingPoint+CompressedString.swift"; path = "Sources/SwiftyHYGDB/FloatingPoint+CompressedString.swift"; sourceTree = "<group>"; };
 		03CB8DA8EA8BF0AA21A0CACF9CFCD9CF /* Pods-SwiftyHYGDB_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Example.release.xcconfig"; sourceTree = "<group>"; };
 		04416053038E98DF60F8005FD4BAD73B /* Pods-SwiftyHYGDB_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftyHYGDB_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		06EFAEE76165D2BDE98103E83760BD02 /* SwiftyHYGDB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyHYGDB.swift; path = Sources/SwiftyHYGDB.swift; sourceTree = "<group>"; };
+		045DC994D79A3BFD71FCB4D728692256 /* SwiftyHYGDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyHYGDB.xcconfig; sourceTree = "<group>"; };
+		082A5BF75EE7A4C8FAF1926F72E6DB0F /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/SwiftyHYGDB/Box.swift; sourceTree = "<group>"; };
 		1579D5765C086A568CD0CE4BE542B6BE /* Pods-SwiftyHYGDB_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Tests-resources.sh"; sourceTree = "<group>"; };
+		1701F07C9B328CAA0ED1598A53E9C91F /* LineGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineGenerator.swift; path = Sources/SwiftyHYGDB/LineGenerator.swift; sourceTree = "<group>"; };
+		1BF085121589D2D33967DFAA55271615 /* SwiftyHYGDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-prefix.pch"; sourceTree = "<group>"; };
 		22E61EBBF77809C8444932A3C986F8A8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A19147AA14EC8898E21EFBAD12A0BF3 /* RadialStar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadialStar.swift; path = Sources/SwiftyHYGDB/RadialStar.swift; sourceTree = "<group>"; };
 		2B922AA9A38B6156A1E9A949A0C0DEE9 /* Pods-SwiftyHYGDB_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftyHYGDB_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2FA16A7D23EF3739C2F4E6D0C7349DF5 /* SwiftyHYGDB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyHYGDB.modulemap; sourceTree = "<group>"; };
+		36100628B5702BE1D2AF75BACFC14642 /* StarData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarData.swift; path = Sources/SwiftyHYGDB/StarData.swift; sourceTree = "<group>"; };
 		372E7A408039AE6F39B1ED0686C29899 /* Pods-SwiftyHYGDB_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		37B5168B2FBA0B5F6BDDC534591CD482 /* FloatingPoint+CompressedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FloatingPoint+CompressedString.swift"; path = "Sources/FloatingPoint+CompressedString.swift"; sourceTree = "<group>"; };
-		3E3D36BA38AD0293D383711026C8C4F0 /* Star3D+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+Codable.swift"; path = "Sources/Star3D+Codable.swift"; sourceTree = "<group>"; };
+		4B54E333A3C6F71F89217F587BB9A455 /* Point3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point3D.swift; path = Sources/SwiftyHYGDB/Point3D.swift; sourceTree = "<group>"; };
 		4E15465553085CDECF584F6880641DC6 /* Pods-SwiftyHYGDB_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Example-frameworks.sh"; sourceTree = "<group>"; };
-		5992E6AEA3BAA4B944902DF6B38AF2B2 /* RadialStar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadialStar.swift; path = Sources/RadialStar.swift; sourceTree = "<group>"; };
+		5A6E2F725B35FF5CEF52B9A2F054E7D0 /* SwiftyHYGDB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyHYGDB.swift; path = Sources/SwiftyHYGDB/SwiftyHYGDB.swift; sourceTree = "<group>"; };
 		5BC0C0B482FB03CC03F9EF050230E79F /* Pods-SwiftyHYGDB_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwiftyHYGDB_Tests.modulemap"; sourceTree = "<group>"; };
-		5CB2AF7DD9A9E5DA7A09DD707C5C44BD /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6820A2066D02448117555EE185041987 /* Pods-SwiftyHYGDB_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyHYGDB_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6BDBF406B70E5505907B75BA6C371284 /* Star3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Star3D.swift; path = Sources/Star3D.swift; sourceTree = "<group>"; };
-		6EE60A9D5D73B5F17F59074E009E5CB5 /* SwiftyHYGDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyHYGDB-dummy.m"; sourceTree = "<group>"; };
-		790E62CC5CA9F543D5E3FD4D9B534297 /* SwiftyHYGDB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyHYGDB.modulemap; sourceTree = "<group>"; };
 		82501046157CDAFE3A22D34E4A5331B2 /* Pods-SwiftyHYGDB_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		85F946F427DCE50E02AA154A29F1FFB7 /* Star3D+CVS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+CVS.swift"; path = "Sources/Star3D+CVS.swift"; sourceTree = "<group>"; };
 		86769EE5750B00F7EE00504C4E302FCD /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		91A49B3CC16AD77506465F3308D89593 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		895AA05609FF6A7A3F39F721B397DEA9 /* Star3D+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+Codable.swift"; path = "Sources/SwiftyHYGDB/Star3D+Codable.swift"; sourceTree = "<group>"; };
+		8B57B38A27F76EDBED9671B4A6885090 /* SwiftyHYGDB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9C74DE9DF15EFCE84ACA2FFBC42481B8 /* Pods-SwiftyHYGDB_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftyHYGDB_Example-dummy.m"; sourceTree = "<group>"; };
 		A5E3981387C4A8A4919166DA24C3B369 /* Pods_SwiftyHYGDB_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftyHYGDB_Tests.framework; path = "Pods-SwiftyHYGDB_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88AA66C2691D090DA352C36470A15E8 /* Pods-SwiftyHYGDB_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Example-resources.sh"; sourceTree = "<group>"; };
-		BBEBDE89598DC2D4249279A0833B381F /* Point3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Point3D.swift; path = Sources/Point3D.swift; sourceTree = "<group>"; };
-		BF055C6620E34305330821CA82E3D2E0 /* StarData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarData.swift; path = Sources/StarData.swift; sourceTree = "<group>"; };
-		C1E098EEA6B535A0E8E83B69A15262D9 /* LineGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineGenerator.swift; path = Sources/LineGenerator.swift; sourceTree = "<group>"; };
+		BB8E4A1054AEC9AC631422CC22A1D67A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD31671BF9A137217945E005D559086F /* Star3D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Star3D.swift; path = Sources/SwiftyHYGDB/Star3D.swift; sourceTree = "<group>"; };
+		BF27EBA52D6BAE2C4D2C1A6E03E4E846 /* SwiftyHYGDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyHYGDB-dummy.m"; sourceTree = "<group>"; };
 		C1F7BE4FDC0942ECEA2B58D627919957 /* Pods-SwiftyHYGDB_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftyHYGDB_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C6616A07FE51F39A3AF52C1878FECABA /* Pods-SwiftyHYGDB_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C6BC7D99BF136F206B697F9B3D978596 /* SwiftyHYGDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-prefix.pch"; sourceTree = "<group>"; };
-		CAB64A9ED5FD43EC4A826E1B948E9CC2 /* RadialStar+CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+CSV.swift"; path = "Sources/RadialStar+CSV.swift"; sourceTree = "<group>"; };
 		CB8C7698D9541EA8D64FF83DFB78250D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D169A8F640FB578E9568D499A27A7B3B /* SwiftyHYGDB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyHYGDB-umbrella.h"; sourceTree = "<group>"; };
 		D343C602779A6503304ADF1EF2D92492 /* Pods-SwiftyHYGDB_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftyHYGDB_Tests-dummy.m"; sourceTree = "<group>"; };
+		DBFF07F69BA0C0FAA387DA5D756DBD9D /* Star3D+CVS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+CVS.swift"; path = "Sources/SwiftyHYGDB/Star3D+CVS.swift"; sourceTree = "<group>"; };
 		DF3AF9F16F855100566980F44DB8F8FC /* Pods_SwiftyHYGDB_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftyHYGDB_Example.framework; path = "Pods-SwiftyHYGDB_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E09814A4C03557B76F77A88B549B86E5 /* RadialStar+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+Codable.swift"; path = "Sources/RadialStar+Codable.swift"; sourceTree = "<group>"; };
 		E204402C385C28736C01DC4F691407CB /* SwiftyHYGDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyHYGDB.framework; path = SwiftyHYGDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5804F4E3AA029EFB7148DE7A70D7579 /* Pods-SwiftyHYGDB_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwiftyHYGDB_Example.modulemap"; sourceTree = "<group>"; };
-		ED6DF08A8D9D03B565DAB9DE17E56E16 /* SwiftyHYGDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyHYGDB.xcconfig; sourceTree = "<group>"; };
 		F0896EE15603432B0E7370C60EBD129A /* Pods-SwiftyHYGDB_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyHYGDB_Example-umbrella.h"; sourceTree = "<group>"; };
+		FD37F548D48F466AD011B476313F2EC7 /* RadialStar+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RadialStar+Codable.swift"; path = "Sources/SwiftyHYGDB/RadialStar+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 		41E09C854FD6A7DBA8EF6D1D6F05DB71 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4E80627D66D3E79DF899012ABEE0B15C /* SwiftyHYGDB */,
+				AE1DEBDA9D891725504E65DF44D0BF22 /* SwiftyHYGDB */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -159,25 +159,18 @@
 			path = "Target Support Files/Pods-SwiftyHYGDB_Example";
 			sourceTree = "<group>";
 		};
-		4E80627D66D3E79DF899012ABEE0B15C /* SwiftyHYGDB */ = {
+		552ECBF6E18E747ECD9448EDD8F8F3EB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5CB2AF7DD9A9E5DA7A09DD707C5C44BD /* Box.swift */,
-				37B5168B2FBA0B5F6BDDC534591CD482 /* FloatingPoint+CompressedString.swift */,
-				C1E098EEA6B535A0E8E83B69A15262D9 /* LineGenerator.swift */,
-				BBEBDE89598DC2D4249279A0833B381F /* Point3D.swift */,
-				5992E6AEA3BAA4B944902DF6B38AF2B2 /* RadialStar.swift */,
-				E09814A4C03557B76F77A88B549B86E5 /* RadialStar+Codable.swift */,
-				CAB64A9ED5FD43EC4A826E1B948E9CC2 /* RadialStar+CSV.swift */,
-				6BDBF406B70E5505907B75BA6C371284 /* Star3D.swift */,
-				3E3D36BA38AD0293D383711026C8C4F0 /* Star3D+Codable.swift */,
-				85F946F427DCE50E02AA154A29F1FFB7 /* Star3D+CVS.swift */,
-				BF055C6620E34305330821CA82E3D2E0 /* StarData.swift */,
-				06EFAEE76165D2BDE98103E83760BD02 /* SwiftyHYGDB.swift */,
-				AC704C77CF0B531510119AD07D5B0BB6 /* Support Files */,
+				BB8E4A1054AEC9AC631422CC22A1D67A /* Info.plist */,
+				2FA16A7D23EF3739C2F4E6D0C7349DF5 /* SwiftyHYGDB.modulemap */,
+				045DC994D79A3BFD71FCB4D728692256 /* SwiftyHYGDB.xcconfig */,
+				BF27EBA52D6BAE2C4D2C1A6E03E4E846 /* SwiftyHYGDB-dummy.m */,
+				1BF085121589D2D33967DFAA55271615 /* SwiftyHYGDB-prefix.pch */,
+				8B57B38A27F76EDBED9671B4A6885090 /* SwiftyHYGDB-umbrella.h */,
 			);
-			name = SwiftyHYGDB;
-			path = ../..;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SwiftyHYGDB";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -209,18 +202,25 @@
 			path = "Target Support Files/Pods-SwiftyHYGDB_Tests";
 			sourceTree = "<group>";
 		};
-		AC704C77CF0B531510119AD07D5B0BB6 /* Support Files */ = {
+		AE1DEBDA9D891725504E65DF44D0BF22 /* SwiftyHYGDB */ = {
 			isa = PBXGroup;
 			children = (
-				91A49B3CC16AD77506465F3308D89593 /* Info.plist */,
-				790E62CC5CA9F543D5E3FD4D9B534297 /* SwiftyHYGDB.modulemap */,
-				ED6DF08A8D9D03B565DAB9DE17E56E16 /* SwiftyHYGDB.xcconfig */,
-				6EE60A9D5D73B5F17F59074E009E5CB5 /* SwiftyHYGDB-dummy.m */,
-				C6BC7D99BF136F206B697F9B3D978596 /* SwiftyHYGDB-prefix.pch */,
-				D169A8F640FB578E9568D499A27A7B3B /* SwiftyHYGDB-umbrella.h */,
+				082A5BF75EE7A4C8FAF1926F72E6DB0F /* Box.swift */,
+				0343CC3A459CE999556092EB979B9478 /* FloatingPoint+CompressedString.swift */,
+				1701F07C9B328CAA0ED1598A53E9C91F /* LineGenerator.swift */,
+				4B54E333A3C6F71F89217F587BB9A455 /* Point3D.swift */,
+				2A19147AA14EC8898E21EFBAD12A0BF3 /* RadialStar.swift */,
+				FD37F548D48F466AD011B476313F2EC7 /* RadialStar+Codable.swift */,
+				02F568C4D2F9BF306294908D32DFDE2B /* RadialStar+CSV.swift */,
+				BD31671BF9A137217945E005D559086F /* Star3D.swift */,
+				895AA05609FF6A7A3F39F721B397DEA9 /* Star3D+Codable.swift */,
+				DBFF07F69BA0C0FAA387DA5D756DBD9D /* Star3D+CVS.swift */,
+				36100628B5702BE1D2AF75BACFC14642 /* StarData.swift */,
+				5A6E2F725B35FF5CEF52B9A2F054E7D0 /* SwiftyHYGDB.swift */,
+				552ECBF6E18E747ECD9448EDD8F8F3EB /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SwiftyHYGDB";
+			name = SwiftyHYGDB;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -370,19 +370,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EE4D5EAF511C3EB1E64A461AFFEF476 /* Box.swift in Sources */,
-				452AA98C21EA07ED21D0559F64F7BBF6 /* FloatingPoint+CompressedString.swift in Sources */,
-				A3E9D83E1A6FAD2B5DF3784E7CFC1017 /* LineGenerator.swift in Sources */,
-				BFF6B1BBDCB2D44AEE055EBADF181FFF /* Point3D.swift in Sources */,
-				B1B7093D7EDA45E12A1E9FF15D69DBA7 /* RadialStar+Codable.swift in Sources */,
-				107B4D15E7A934A8537CB3C488762FB6 /* RadialStar+CSV.swift in Sources */,
-				86ED361D9AC7CB21241AA5281CA1886F /* RadialStar.swift in Sources */,
-				5F443CFED6C0E3D763F123E3E022FCF7 /* Star3D+Codable.swift in Sources */,
-				0A518354C618CA34420E65C2E38E6402 /* Star3D+CVS.swift in Sources */,
-				4563B8C6DDEF49B374774CBFE24F1016 /* Star3D.swift in Sources */,
-				E176AD933B7716B6611911B010CF3038 /* StarData.swift in Sources */,
+				0BE02DD132CC1BC0EAB090D30A4D9753 /* Box.swift in Sources */,
+				F5AA951115A524FA9E4A1214454F4EC4 /* FloatingPoint+CompressedString.swift in Sources */,
+				D8777B164481DE16DB740B7E534D56E7 /* LineGenerator.swift in Sources */,
+				78203388ADB34B896349D357A0710D5A /* Point3D.swift in Sources */,
+				33E79909003013362E566891C7619D2F /* RadialStar+Codable.swift in Sources */,
+				5E2C0E615F51CF57FB5390359BF27ECC /* RadialStar+CSV.swift in Sources */,
+				BD2EDCF20C0FA82F7646C531C220A32B /* RadialStar.swift in Sources */,
+				240A4430BC6D71340C88296F548D7332 /* Star3D+Codable.swift in Sources */,
+				3F1306093796BE7DCA94463568AAE1DD /* Star3D+CVS.swift in Sources */,
+				69C7BE4C1F21A64C5E0C18B43445532F /* Star3D.swift in Sources */,
+				FC1675AF49E23B0E8E00E74532047828 /* StarData.swift in Sources */,
 				79F0838BBD919DB4714F35D1E3884CED /* SwiftyHYGDB-dummy.m in Sources */,
-				1CC4B010B70F4FA1AEDDB2FB667CC7AC /* SwiftyHYGDB.swift in Sources */,
+				9B2D02E4BC983662801ABEEE50FA3407 /* SwiftyHYGDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +475,7 @@
 		};
 		45C5E412941BD43FB2074AE4E99B2DBD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6DF08A8D9D03B565DAB9DE17E56E16 /* SwiftyHYGDB.xcconfig */;
+			baseConfigurationReference = 045DC994D79A3BFD71FCB4D728692256 /* SwiftyHYGDB.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -603,7 +603,7 @@
 		};
 		E3E4BC38FDFB5B0309BBCE3449BFA5BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6DF08A8D9D03B565DAB9DE17E56E16 /* SwiftyHYGDB.xcconfig */;
+			baseConfigurationReference = 045DC994D79A3BFD71FCB4D728692256 /* SwiftyHYGDB.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
