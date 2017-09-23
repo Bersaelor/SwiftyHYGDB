@@ -118,7 +118,9 @@ func readNumber<T: HasCFormatterString>(at index: inout Int, stringPtr: UnsafeMu
         var scanned: Int32 = -1
         withUnsafeMutablePointer(to: &value, { valuePtr in
             let args: [CVarArg] = [valuePtr]
-            scanned = vsscanf(newCPtr, T.cFormatString, getVaList(args))
+            scanned = withVaList(args, { (vaListPtr) -> Int32 in
+                return vsscanf(newCPtr, T.cFormatString, vaListPtr)
+            })
         })
         return scanned > 0 ? value : nil
     }
