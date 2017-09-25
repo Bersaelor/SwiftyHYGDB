@@ -66,6 +66,7 @@ extension Star3D {
         self.z = z
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
+                                db_id: dbID,
                                 hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,

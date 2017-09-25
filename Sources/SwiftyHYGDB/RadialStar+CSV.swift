@@ -12,7 +12,7 @@ extension RadialStar: CSVWritable {
 
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
-        var result = "\(dbID),"
+        var result = ""
         result.append(starData.csvLine)
         return result
     }
@@ -46,11 +46,11 @@ extension RadialStar {
             RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         }
         
-        self.dbID = dbID
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
+                                db_id: dbID,
                                 hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,

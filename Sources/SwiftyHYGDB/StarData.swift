@@ -12,6 +12,7 @@ import Foundation
 public struct StarData: Codable {
     public let right_ascension: Float
     public let declination: Float
+    public let db_id: Int32
     public let hip_id: Int32
     public let hd_id: Int32
     public let hr_id: Int32
@@ -28,13 +29,14 @@ public struct StarData: Codable {
     enum CodingKeys: String, CodingKey {
         case right_ascension = "r"
         case declination     = "d"
+        case db_id           = "i"
         case hip_id          = "hi"
         case hd_id           = "hd"
         case hr_id           = "hr"
         case gl_id           = "gl"
         case bayer_flamstedt = "b"
         case properName      = "p"
-        case distance        = "i"
+        case distance        = "e"
         case rv              = "v"
         case mag             = "m"
         case absmag          = "a"
@@ -45,6 +47,7 @@ public struct StarData: Codable {
 
 extension StarData {
     init(right_ascension: Float, declination: Float,
+         db_id: Int32,
          hip_id: Int32?,
          hd_id: Int32?,
          hr_id: Int32?,
@@ -57,6 +60,7 @@ extension StarData {
         
         self.right_ascension = right_ascension
         self.declination = declination
+        self.db_id = db_id
         self.hip_id = hip_id ?? -1
         self.hd_id = hd_id ?? -1
         self.hr_id = hr_id ?? -1

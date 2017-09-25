@@ -55,6 +55,7 @@ extension Star3D {
         
         let starData = StarData(right_ascension: right_ascension,
                                       declination: declination,
+                                      db_id: dbID,
                                       hip_id: Int32(fields[1]),
                                       hd_id: Int32(fields[2]),
                                       hr_id: Int32(fields[3]),

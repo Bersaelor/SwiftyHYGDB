@@ -35,7 +35,6 @@ extension StarData {
 
 extension RadialStar {
     func isIdentical(star: RadialStar) -> Bool {
-        if dbID != star.dbID { return false }
         if abs(normalizedAscension - star.normalizedAscension) > 1 * Float.ulpOfOne { return false }
         if abs(normalizedDeclination - star.normalizedDeclination) > 1 * Float.ulpOfOne { return false }
         
