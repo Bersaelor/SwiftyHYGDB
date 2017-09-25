@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Float: size: \(MemoryLayout<Int32>.size),alignment: \(MemoryLayout<Int32>.alignment)")
+        print("RadialStar: size: \(MemoryLayout<RadialStar>.size),alignment: \(MemoryLayout<RadialStar>.alignment)")
+        print("StarData: size: \(MemoryLayout<StarData>.size), alignment: \(MemoryLayout<StarData>.alignment), stride: \(MemoryLayout<StarData>.stride)")
 
     }
     

@@ -12,18 +12,18 @@ import Foundation
 public struct StarData: Codable {
     public let right_ascension: Float
     public let declination: Float
-    public let hip_id: Int32?
-    public let hd_id: Int32?
-    public let hr_id: Int32?
-    public let gl_id: String?
-    public let bayer_flamstedt: String?
-    public let properName: String?
+    public let hip_id: Int32
+    public let hd_id: Int32
+    public let hr_id: Int32
+    public let gl_id: String
+    public let bayer_flamstedt: String
+    public let properName: String
     public let distance: Double
-    public let rv: Double?
+    public let rv: Double
     public let mag: Double
     public let absmag: Double
-    public let spectralType: String?
-    public let colorIndex: Float?
+    public let spectralType: String
+    public let colorIndex: Float
 
     enum CodingKeys: String, CodingKey {
         case right_ascension = "r"
@@ -44,21 +44,50 @@ public struct StarData: Codable {
 }
 
 extension StarData {
+    init(right_ascension: Float, declination: Float,
+         hip_id: Int32?,
+         hd_id: Int32?,
+         hr_id: Int32?,
+         gl_id: String?,
+         bayer_flamstedt: String?,
+         properName: String?,
+         distance: Double, rv: Double?,
+         mag: Double, absmag: Double,
+         spectralType: String?, colorIndex: Float?) {
+        
+        self.right_ascension = right_ascension
+        self.declination = declination
+        self.hip_id = hip_id ?? -1
+        self.hd_id = hd_id ?? -1
+        self.hr_id = hr_id ?? -1
+        self.gl_id = gl_id ?? ""
+        self.bayer_flamstedt = bayer_flamstedt ?? ""
+        self.properName = properName ?? ""
+        self.distance = distance
+        self.rv = rv ?? 0
+        self.mag = mag
+        self.absmag = absmag
+        self.spectralType = spectralType ?? ""
+        self.colorIndex = colorIndex ?? 0
+    }
+}
+
+extension StarData {
     public var csvLine: String {
-        var result = (hip_id?.description ?? "").appending(",")
-        result.append((hd_id?.description ?? "").appending(","))
-        result.append((hr_id?.description ?? "").appending(","))
-        result.append((gl_id?.description ?? "").appending(","))
-        result.append((bayer_flamstedt ?? "").appending(","))
-        result.append((properName ?? "").appending(","))
+        var result = (hip_id.description).appending(",")
+        result.append((hd_id.description).appending(","))
+        result.append((hr_id.description).appending(","))
+        result.append((gl_id.description).appending(","))
+        result.append((bayer_flamstedt).appending(","))
+        result.append((properName).appending(","))
         result.append(right_ascension.compressedString.appending(","))
         result.append(declination.compressedString.appending(","))
         result.append(distance.compressedString.appending(","))
-        result.append((rv?.compressedString ?? "").appending(","))
+        result.append((rv.compressedString).appending(","))
         result.append(mag.compressedString.appending(","))
         result.append(absmag.compressedString.appending(","))
-        result.append((spectralType ?? "").appending(","))
-        result.append((colorIndex?.compressedString ?? "").appending(","))
+        result.append((spectralType).appending(","))
+        result.append((colorIndex.compressedString).appending(","))
         return result
     }
 }
