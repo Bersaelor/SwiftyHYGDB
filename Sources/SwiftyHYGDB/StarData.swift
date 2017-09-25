@@ -23,7 +23,7 @@ public struct StarData: Codable {
     public let rv: Double
     public let mag: Double
     public let absmag: Double
-    public let spectralType: String
+    public let spectralType: [CChar]
     public let colorIndex: Float
 
     enum CodingKeys: String, CodingKey {
@@ -71,7 +71,7 @@ extension StarData {
         self.rv = rv ?? 0
         self.mag = mag
         self.absmag = absmag
-        self.spectralType = spectralType ?? ""
+        self.spectralType = (spectralType ?? "").cString(using: .utf8) ?? []
         self.colorIndex = colorIndex ?? 0
     }
 }
@@ -90,7 +90,7 @@ extension StarData {
         result.append((rv.compressedString).appending(","))
         result.append(mag.compressedString.appending(","))
         result.append(absmag.compressedString.appending(","))
-        result.append((spectralType).appending(","))
+        result.append((String(cString: spectralType)).appending(","))
         result.append((colorIndex.compressedString).appending(","))
         return result
     }

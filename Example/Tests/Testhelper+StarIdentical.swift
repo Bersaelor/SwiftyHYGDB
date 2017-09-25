@@ -25,11 +25,11 @@ extension StarData {
             && starData.bayer_flamstedt == self.bayer_flamstedt
             && starData.properName == self.properName
             && abs(starData.distance - self.distance) < Double.ulpOfOne
-            && abs((starData.rv ?? 0) - (self.rv ?? 0)) < Double.ulpOfOne
+            && abs((starData.rv) - (self.rv)) < Double.ulpOfOne
             && abs(starData.mag - self.mag) < Double.ulpOfOne
             && abs(starData.absmag - self.absmag) < Double.ulpOfOne
             && starData.spectralType == self.spectralType
-            && abs((starData.colorIndex ?? 0) - (self.colorIndex ?? 0)) < Float.ulpOfOne
+            && abs((starData.colorIndex) - (self.colorIndex)) < Float.ulpOfOne
     }
 }
 

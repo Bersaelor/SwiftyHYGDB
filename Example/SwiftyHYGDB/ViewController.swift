@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("String: size: \(MemoryLayout<String>.size),alignment: \(MemoryLayout<String>.alignment)")
         print("Float: size: \(MemoryLayout<Int32>.size),alignment: \(MemoryLayout<Int32>.alignment),max: \(Int32.max)")
         print("RadialStar: size: \(MemoryLayout<RadialStar>.size),alignment: \(MemoryLayout<RadialStar>.alignment)")
         print("StarData: size: \(MemoryLayout<StarData>.size), alignment: \(MemoryLayout<StarData>.alignment), stride: \(MemoryLayout<StarData>.stride)")
@@ -35,6 +36,24 @@ class ViewController: UIViewController {
             let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath, precess: true)
             self?.stars = stars
             print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
+
+            let longestGlId = stars?.reduce("", { (res, star) -> String in
+                if (star.starData?.value.bayer_flamstedt.count ?? 0) > res.count {
+                    return star.starData?.value.bayer_flamstedt ?? ""
+                } else { return res }
+            }) ?? ""
+            
+            let longestBF = stars?.reduce(0, { (res, star) -> Int in
+                return max(res, star.starData?.value.bayer_flamstedt.count ?? 0)
+            }) ?? 0
+
+//            let longestSpectral = stars?.reduce("0", { (res, star) -> String in
+//                if (star.starData?.value.spectralType.count ?? 0) > res.count {
+//                    return star.starData?.value.spectralType ?? ""
+//                } else { return res }
+//            })
+
+            print("Longest gl_id: \(longestGlId), longestBF: \(longestBF)")
             DispatchQueue.main.async {
                 self?.saveStars(fileName: "visibleStars.csv",
                                 predicate: { $0.starData?.value.mag ?? Double.infinity < SwiftyHYGDB.maxVisibleMag })
