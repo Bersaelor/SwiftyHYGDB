@@ -16,15 +16,15 @@ public struct StarData: Codable {
     public let hip_id: Int32
     public let hd_id: Int32
     public let hr_id: Int32
+    public let rv: Float
+    public let mag: Float
+    public let absmag: Float
+    public let colorIndex: Float
+    public let spectralType: [CChar]
     public let gl_id: String
     public let bayer_flamstedt: String
     public let properName: String
     public let distance: Double
-    public let rv: Double
-    public let mag: Float
-    public let absmag: Float
-    public let spectralType: [CChar]
-    public let colorIndex: Float
 
     enum CodingKeys: String, CodingKey {
         case right_ascension = "r"
@@ -54,7 +54,8 @@ extension StarData {
          gl_id: String?,
          bayer_flamstedt: String?,
          properName: String?,
-         distance: Double, rv: Double?,
+         distance: Double,
+         rv: Float?,
          mag: Float, absmag: Float,
          spectralType: String?, colorIndex: Float?) {
         

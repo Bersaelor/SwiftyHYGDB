@@ -62,7 +62,7 @@ extension Star3D {
                                       gl_id: fields[4],
                                       bayer_flamstedt: fields[5],
                                       properName: fields[6],
-                                      distance: dist, rv: Double(fields[12]),
+                                      distance: dist, rv: Float(fields[12]),
                                       mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }

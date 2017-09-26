@@ -44,9 +44,9 @@ class ViewController: UIViewController {
                 } else { return res }
             }) ?? ""
             
-            let smallestRV = stars?.reduce(Double.infinity, { (res, star) -> Double in
-                return min(res, star.starData?.value.rv ?? 0)
-            }) ?? 0
+//            let smallestRV = stars?.reduce(Double.infinity, { (res, star) -> Double in
+//                return min(res, star.starData?.value.rv ?? 0)
+//            }) ?? 0
 
 //            let longestSpectral = stars?.reduce("0", { (res, star) -> String in
 //                if (star.starData?.value.spectralType.count ?? 0) > res.count {
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 //                } else { return res }
 //            })
 
-            print("Longest gl_id: \(longestGlId), smallestAbsMag: \(smallestRV)")
+            print("Longest gl_id: \(longestGlId)")
             DispatchQueue.main.async {
                 self?.saveStars(fileName: "visibleStars.csv",
                                 predicate: { $0.starData?.value.mag ?? Float.infinity < SwiftyHYGDB.maxVisibleMag })
