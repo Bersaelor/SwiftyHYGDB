@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 
             let longestGlId = stars?.reduce("", { (res, star) -> String in
                 if (star.starData?.value.bayer_flamstedt.count ?? 0) > res.count {
-                    return star.starData?.value.bayer_flamstedt ?? ""
+                    return star.starData?.value.getBayerFlamstedt() ?? ""
                 } else { return res }
             }) ?? ""
             

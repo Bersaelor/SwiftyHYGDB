@@ -105,9 +105,9 @@ extension Star3D: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = starData?.value.distance ?? Double.infinity
         let magString = starData?.value.mag ?? Float.infinity
-        return "🌠: ".appending(starData?.value.properName ?? "N.A.")
+        return "🌠: ".appending(starData?.value.getProperName() ?? "N.A.")
             .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
-            .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")
+            .appending("Gliese(\(starData?.value.getGlId() ?? "")), BF(\(starData?.value.getBayerFlamstedt() ?? "")):")
             .appending("\(starData?.value.right_ascension ?? 100), \(starData?.value.declination ?? 100),"
                 .appending(" \( distanceString ) mag: \(magString)"))
     }
