@@ -8,7 +8,7 @@
 import Foundation
 
 public class SwiftyHYGDB: NSObject {
-    public static let maxVisibleMag = 6.5
+    public static let maxVisibleMag: Float = 6.5
     
     private static var yearsSinceEraStart: Int {
         let dateComponents = DateComponents(year: 2000, month: 3, day: 21, hour: 1)

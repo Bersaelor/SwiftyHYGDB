@@ -21,8 +21,8 @@ public struct StarData: Codable {
     public let properName: String
     public let distance: Double
     public let rv: Double
-    public let mag: Double
-    public let absmag: Double
+    public let mag: Float
+    public let absmag: Float
     public let spectralType: [CChar]
     public let colorIndex: Float
 
@@ -55,7 +55,7 @@ extension StarData {
          bayer_flamstedt: String?,
          properName: String?,
          distance: Double, rv: Double?,
-         mag: Double, absmag: Double,
+         mag: Float, absmag: Float,
          spectralType: String?, colorIndex: Float?) {
         
         self.right_ascension = right_ascension

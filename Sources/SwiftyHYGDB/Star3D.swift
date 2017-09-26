@@ -29,8 +29,8 @@ extension Star3D {
             var right_ascension = Float(fields[7]),
             var declination = Float(fields[8]),
             let dist = Double(fields[9]),
-            let mag = Double(fields[13]),
-            let absmag = Double(fields[14]),
+            let mag = Float(fields[13]),
+            let absmag = Float(fields[14]),
             var x = Float(fields[16]),
             var y = Float(fields[17]),
             var z = Float(fields[18])
@@ -104,7 +104,7 @@ extension Star3D: Equatable {}
 extension Star3D: CustomDebugStringConvertible {
     public var debugDescription: String {
         let distanceString = starData?.value.distance ?? Double.infinity
-        let magString = starData?.value.mag ?? Double.infinity
+        let magString = starData?.value.mag ?? Float.infinity
         return "🌠: ".appending(starData?.value.properName ?? "N.A.")
             .appending(", Hd(\(starData?.value.hd_id ?? -1)) + HR(\(starData?.value.hr_id ?? -1))")
             .appending("Gliese(\(starData?.value.gl_id ?? "")), BF(\(starData?.value.bayer_flamstedt ?? "")):")

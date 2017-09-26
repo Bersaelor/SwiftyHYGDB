@@ -26,8 +26,8 @@ extension StarData {
             && starData.properName == self.properName
             && abs(starData.distance - self.distance) < Double.ulpOfOne
             && abs((starData.rv) - (self.rv)) < Double.ulpOfOne
-            && abs(starData.mag - self.mag) < Double.ulpOfOne
-            && abs(starData.absmag - self.absmag) < Double.ulpOfOne
+            && abs(starData.mag - self.mag) < Float.ulpOfOne
+            && abs(starData.absmag - self.absmag) < Float.ulpOfOne
             && starData.spectralType == self.spectralType
             && abs((starData.colorIndex) - (self.colorIndex)) < Float.ulpOfOne
     }

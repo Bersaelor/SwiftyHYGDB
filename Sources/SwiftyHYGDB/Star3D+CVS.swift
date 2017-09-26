@@ -39,8 +39,8 @@ extension Star3D {
         let pmra: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let pmdec: Double? = advanceByYears != nil ? readNumber(at: &index, stringPtr: rowPtr) : nil
         let rv: Double? = readNumber(at: &index, stringPtr: rowPtr)
-        guard let mag: Double = readNumber(at: &index, stringPtr: rowPtr),
-            let absmag: Double = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
+        guard let mag: Float = readNumber(at: &index, stringPtr: rowPtr),
+            let absmag: Float = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
         let spectralType = readString(at: &index, stringPtr: rowPtr)
         let colorIndex: Float? = readNumber(at: &index, stringPtr: rowPtr)
         guard var x: Float = readNumber(at: &index, stringPtr: rowPtr),
