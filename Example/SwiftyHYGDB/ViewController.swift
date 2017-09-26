@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         print("String: size: \(MemoryLayout<String>.size),alignment: \(MemoryLayout<String>.alignment)")
         print("Float: size: \(MemoryLayout<Int32>.size),alignment: \(MemoryLayout<Int32>.alignment),max: \(Int32.max)")
         print("RadialStar: size: \(MemoryLayout<RadialStar>.size),alignment: \(MemoryLayout<RadialStar>.alignment)")
+        print("Star3D: size: \(MemoryLayout<Star3D>.size),alignment: \(MemoryLayout<Star3D>.alignment)")
         print("StarData: size: \(MemoryLayout<StarData>.size), alignment: \(MemoryLayout<StarData>.alignment), stride: \(MemoryLayout<StarData>.stride)")
 
     }

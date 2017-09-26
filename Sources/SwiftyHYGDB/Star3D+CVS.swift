@@ -12,8 +12,7 @@ extension Star3D: CSVWritable {
 
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
-        var result = "\(dbID),"
-        result.append(starData.csvLine)
+        var result = starData.csvLine
         result.append((x.compressedString).appending(","))
         result.append((y.compressedString).appending(","))
         result.append((z.compressedString).appending(","))

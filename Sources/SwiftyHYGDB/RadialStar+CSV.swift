@@ -12,9 +12,7 @@ extension RadialStar: CSVWritable {
 
     public var csvLine: String? {
         guard let starData = self.starData?.value else { return nil }
-        var result = ""
-        result.append(starData.csvLine)
-        return result
+        return starData.csvLine
     }
 }
 

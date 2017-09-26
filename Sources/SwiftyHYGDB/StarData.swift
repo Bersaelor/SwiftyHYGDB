@@ -78,9 +78,10 @@ extension StarData {
 
 extension StarData {
     public var csvLine: String {
-        var result = (hip_id.description).appending(",")
-        result.append((hd_id.description).appending(","))
-        result.append((hr_id.description).appending(","))
+        var result = (db_id.description).appending(",")
+        result.append((hip_id != -1 ? hip_id.description : "").appending(","))
+        result.append((hd_id != -1 ? hd_id.description : "").appending(","))
+        result.append((hr_id != -1 ? hr_id.description : "").appending(","))
         result.append((gl_id.description).appending(","))
         result.append((bayer_flamstedt).appending(","))
         result.append((properName).appending(","))
