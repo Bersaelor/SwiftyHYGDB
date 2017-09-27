@@ -10,8 +10,12 @@ import Foundation
 import SwiftyHYGDB
 
 let accuracy: Float = {
-    if #available(iOS 11, *) { return Float.ulpOfOne
-    } else { return 35 * Float.ulpOfOne }
+    #if os(iOS)
+        if #available(iOS 11, *) { return Float.ulpOfOne }
+        else { return 35 * Float.ulpOfOne }
+    #else
+        return 35 * Float.ulpOfOne
+    #endif
 }()
 
 extension StarData {
@@ -59,4 +63,30 @@ extension Star3D {
         
         return starData.isIdentical(starData: otherStarData)
     }
+}
+
+extension String {
+    static private let separatorCharacter: Character = "/"
+    static private let separator = String(separatorCharacter)
+
+    static func getOriginalRepositoryPath() -> String? {
+        // this file is at
+        // <original repository directory>/Sources/Kitura/staticFileServer/ResourcePathHandler.swift
+        // the original repository directory is four path components up
+        let currentFilePath = #file
+        
+        var pathComponents =
+            currentFilePath.characters.split(separator: separatorCharacter).map(String.init)
+        let numberOfComponentsFromKituraRepositoryDirectoryToThisFile = 3
+        
+        guard pathComponents.count >= numberOfComponentsFromKituraRepositoryDirectoryToThisFile else {
+            print("unable to get original repository path for \(currentFilePath)")
+            return nil
+        }
+        
+        pathComponents.removeLast(numberOfComponentsFromKituraRepositoryDirectoryToThisFile)
+        
+        return separator + pathComponents.joined(separator: separator)
+    }
+
 }

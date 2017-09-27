@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 import XCTest
 @testable import SwiftyHYGDB
 
@@ -6,14 +6,28 @@ class LoadSaveRadialStarTests: XCTestCase {
     static let allStarFileName = "allStars.csv"
     static let allStar3DFileName = "allStars3D.csv"
     let starsCountInCSV = 119614
+    
+    var originalDBPath: String {
+        if let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv") { return originalDBPath }
+        return String.getOriginalRepositoryPath()! + "/Example/SwiftyHYGDB/hygdata_v3.csv"
+    }
     lazy var originalStars: [RadialStar]? = {
-        let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv")!
         return SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
     }()
     lazy var originalStar3Ds: [Star3D]? = {
-        let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv")!
         return SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
     }()
+    
+    static var allTests = [
+        ("test_01_SaveRadialStars", test_01_SaveRadialStars),
+        ("test_02_ReloadRadialStars", test_02_ReloadRadialStars),
+        ("test_04_Save3DStars", test_04_Save3DStars),
+        ("test_05_Reload3DStars", test_05_Reload3DStars),
+        ("test_06_advanceByYears", test_06_advanceByYears),
+        ("test_07_RadialStarCoding", test_07_RadialStarCoding),
+        ("test_08_Star3DCoding", test_08_Star3DCoding),
+        ("test_09_Star3DMovement", test_09_Star3DMovement),
+    ]
     
     func test_01_SaveRadialStars() {
         guard let stars = originalStars else { return }
@@ -70,8 +84,7 @@ class LoadSaveRadialStarTests: XCTestCase {
     }
     
     func test_06_advanceByYears() {
-        guard let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"),
-            let fileHandle = fopen(originalDBPath, "r") else {
+        guard let fileHandle = fopen(originalDBPath, "r") else {
             XCTFail("Failed to get file handle for hygdata_v3")
             return
         }
@@ -119,6 +132,8 @@ class LoadSaveRadialStarTests: XCTestCase {
                 let originalStar = stars[offset]
                 if !star.isIdentical(star: originalStar) {
                     XCTFail("Reloaded Star: \(star) should have been equal: \(originalStar)")
+                    print("star.cvsline: \(star.csvLine!)")
+                    print("originalStar: \(originalStar.csvLine!)")
                     break
                 }
             }
@@ -141,6 +156,8 @@ class LoadSaveRadialStarTests: XCTestCase {
                 let originalStar = stars[offset]
                 if !star.isIdentical(star: originalStar) {
                     XCTFail("Reloaded Star: \(star) should have been equal: \(originalStar)")
+                    print("star.cvsline: \(star.csvLine!)")
+                    print("originalStar: \(originalStar.csvLine!)")
                     break
                 }
             }
@@ -148,8 +165,7 @@ class LoadSaveRadialStarTests: XCTestCase {
     }
     
     func test_09_Star3DMovement() {
-        guard let originalDBPath = Bundle.main.path(forResource: "hygdata_v3", ofType:  "csv"),
-            let fileHandle = fopen(originalDBPath, "r") else {
+        guard let fileHandle = fopen(originalDBPath, "r") else {
                 XCTFail("Failed to get file handle for hygdata_v3")
                 return
         }
