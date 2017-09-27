@@ -71,10 +71,10 @@ public class SwiftyHYGDB: NSObject {
         return stars
     }
     
-    public static func save<T: CSVWritable>(stars: [T], to path: URL) throws {
+    public static func save<T: CSVWritable>(stars: [T], to path: String) throws {
         let lines = [T.headerLine] + stars.flatMap({ $0.csvLine })
         let fileString = lines.joined(separator: "\n")
-        try fileString.write(to: path, atomically: true, encoding: .utf8)
+        try fileString.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
     }
 
 }

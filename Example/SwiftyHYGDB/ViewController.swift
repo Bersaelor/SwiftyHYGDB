@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
-            try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
+            try SwiftyHYGDB.save(stars: visibleStars, to: filePath.path)
             print("Writing file to \( filePath ) took \( Date().timeIntervalSince(startLoading) )")
         } catch {
             print("Error trying to saving visible stars: \( error )")

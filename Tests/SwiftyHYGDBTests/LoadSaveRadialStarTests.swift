@@ -17,6 +17,15 @@ class LoadSaveRadialStarTests: XCTestCase {
     lazy var originalStar3Ds: [Star3D]? = {
         return SwiftyHYGDB.loadCSVData(from: originalDBPath, precess: true)
     }()
+    func filePath(for fileName: String) -> String {
+        #if os(iOS)
+            guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
+                let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return "" }
+            return filePath.path
+        #else
+            return String.getOriginalRepositoryPath()! + String.separator + fileName
+        #endif
+    }
     
     static var allTests = [
         ("test_01_SaveRadialStars", test_01_SaveRadialStars),
@@ -33,10 +42,8 @@ class LoadSaveRadialStarTests: XCTestCase {
         guard let stars = originalStars else { return }
         XCTAssertEqual(stars.count, starsCountInCSV, "Excpected hygdata_v3 to have \(starsCountInCSV) stars")
         self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStarFileName)
-        
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(LoadSaveRadialStarTests.allStarFileName) else { return }
-        XCTAssertTrue(FileManager().fileExists(atPath: filePath.path), "File should exist at \(filePath)")
+        let path = self.filePath(for: LoadSaveRadialStarTests.allStarFileName)
+        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(filePath)")
     }
     
     func test_02_ReloadRadialStars() {
@@ -60,10 +67,8 @@ class LoadSaveRadialStarTests: XCTestCase {
         guard let stars = originalStar3Ds else { return }
         XCTAssertEqual(stars.count, starsCountInCSV, "Expected hygdata_v3 to have \(starsCountInCSV) stars")
         self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStar3DFileName)
-        
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(LoadSaveRadialStarTests.allStarFileName) else { return }
-        XCTAssertTrue(FileManager().fileExists(atPath: filePath.path), "File should exist at \(filePath)")
+        let path = self.filePath(for: LoadSaveRadialStarTests.allStarFileName)
+        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(filePath)")
     }
     
     func test_05_Reload3DStars() {
@@ -195,56 +200,44 @@ class LoadSaveRadialStarTests: XCTestCase {
     }
     
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
-        guard let stars = stars,
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
-        
+        guard let stars = stars else { return }
+
         print("Writing \(stars.count) stars to file \( filePath )")
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
-            try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
+            try SwiftyHYGDB.save(stars: visibleStars, to: self.filePath(for: fileName))
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
         } catch { print("Error trying to saving stars: \( error )") }
     }
     
     private func saveStars(stars: [Star3D]?, fileName: String, predicate: ((Star3D) -> Bool)? = nil ) {
-        guard let stars = stars,
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return }
-        
+        guard let stars = stars else { return }
+
         print("Writing \(stars.count) stars to file \( filePath )")
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
-            try SwiftyHYGDB.save(stars: visibleStars, to: filePath)
+            try SwiftyHYGDB.save(stars: visibleStars, to: self.filePath(for: fileName))
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
         } catch { print("Error trying to saving stars: \( error )") }
     }
     
     private func loadStars(fileName: String) -> [RadialStar]? {
-        guard let filePath = path(for: fileName) else { return nil }
-
+        let filePath = self.filePath(for: fileName)
         let startLoading = Date()
-        let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath.path)
+        let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath)
         print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
         XCTAssertNotNil(stars, "Expected \(fileName) to not be empty")
         return stars
     }
 
     private func loadStars(fileName: String) -> [Star3D]? {
-        guard let filePath = path(for: fileName) else { return nil }
-        
+        let filePath = self.filePath(for: fileName)
         let startLoading = Date()
-        let stars: [Star3D]? = SwiftyHYGDB.loadCSVData(from: filePath.path)
+        let stars: [Star3D]? = SwiftyHYGDB.loadCSVData(from: filePath)
         print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s from \(filePath)")
         XCTAssertNotNil(stars, "Expected \(fileName) to not be empty")
         return stars
-    }
-    
-    private func path(for fileName: String) -> URL? {
-        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first.flatMap { (path) -> URL in
-            return URL(fileURLWithPath: path).appendingPathComponent(fileName)
-        }
     }
 }

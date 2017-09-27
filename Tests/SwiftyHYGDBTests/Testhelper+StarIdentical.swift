@@ -67,7 +67,7 @@ extension Star3D {
 
 extension String {
     static private let separatorCharacter: Character = "/"
-    static private let separator = String(separatorCharacter)
+    static let separator = String(separatorCharacter)
 
     static func getOriginalRepositoryPath() -> String? {
         // this file is at
