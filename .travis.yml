@@ -14,9 +14,7 @@ matrix:
       env: TEST_DESTINATION="OS=11.0,name=iPhone 7"
       install:
         - ./install_swiftlint.sh
-        - bundle install
       script:
-        - bundle exec danger
         - set -o pipefail && xcodebuild test -workspace Example/SwiftyHYGDB.xcworkspace -scheme SwiftyHYGDB-Example -destination "$TEST_DESTINATION" | xcpretty
     - os: osx
       osx_image: xcode9
@@ -25,7 +23,3 @@ matrix:
       env: TEST_DESTINATION="OS=9.3,name=iPhone 6"
       install:
         - ./install_swiftlint.sh
-        - bundle install
-      
-
-cache: bundler
