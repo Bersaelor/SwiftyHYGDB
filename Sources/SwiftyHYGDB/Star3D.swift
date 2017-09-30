@@ -53,6 +53,8 @@ extension Star3D {
         self.y = y
         self.z = z
         
+        var spectralTypeNr = Int16(2)
+
         let starData = StarData(right_ascension: right_ascension,
                                       declination: declination,
                                       db_id: dbID,
@@ -63,7 +65,7 @@ extension Star3D {
                                       bayer_flamstedt: fields[5],
                                       properName: fields[6],
                                       distance: dist, rv: Float(fields[12]),
-                                      mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
+                                      mag: mag, absmag: absmag, spectralType: spectralTypeNr, colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     

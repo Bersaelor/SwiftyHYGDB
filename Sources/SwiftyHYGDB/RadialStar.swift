@@ -41,6 +41,8 @@ extension RadialStar {
             RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         }
         
+        var spectralTypeNr=Int16(2)
+        
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
@@ -53,7 +55,7 @@ extension RadialStar {
                                 bayer_flamstedt: fields[5],
                                 properName: fields[6],
                                 distance: dist, rv: Float(fields[12]),
-                                mag: mag, absmag: absmag, spectralType: fields[14], colorIndex: Float(fields[15]))
+                                mag: mag, absmag: absmag, spectralType: spectralTypeNr, colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     

@@ -20,7 +20,7 @@ public struct StarData: Codable {
     public let mag: Float
     public let absmag: Float
     public let colorIndex: Float
-    public let spectralType: [CChar]
+    public let spectralType: Int16
     public let gl_id: [CChar]
     public let bayer_flamstedt: [CChar]
     public let properName: [CChar]
@@ -57,7 +57,12 @@ extension StarData {
          distance: Double,
          rv: Float?,
          mag: Float, absmag: Float,
-         spectralType: String?, colorIndex: Float?) {
+         spectralType: Int16, colorIndex: Float?) {
+
+//        print("gl_id: \(gl_id ?? "?")"
+//            + "bayer_flamstedt: \(bayer_flamstedt ?? "?")"
+//            + "properName: \(properName ?? "?")"
+//            + "spectralType: \(spectralType ?? "?")")
         
         self.right_ascension = right_ascension
         self.declination = declination
@@ -72,7 +77,7 @@ extension StarData {
         self.rv = rv ?? 0
         self.mag = mag
         self.absmag = absmag
-        self.spectralType = (spectralType ?? "").cString(using: .utf8) ?? []
+        self.spectralType = spectralType
         self.colorIndex = colorIndex ?? 0
     }
 }
@@ -91,7 +96,7 @@ extension StarData {
     }
     
     public func getSpectralType() -> String {
-        return String(cString: spectralType)
+        return spectralType >= 0 ? SwiftyHYGDB.spectralTypes[Int(spectralType)] : ""
     }
 }
 

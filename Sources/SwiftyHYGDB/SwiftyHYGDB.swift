@@ -10,6 +10,8 @@ import Foundation
 public class SwiftyHYGDB: NSObject {
     public static let maxVisibleMag: Float = 6.5
     
+    static var spectralTypes: [String] = []
+    
     private static var yearsSinceEraStart: Int {
         let dateComponents = DateComponents(year: 2000, month: 3, day: 21, hour: 1)
         guard let springEquinox = Calendar.current.date(from: dateComponents) else { return 0 }
@@ -33,13 +35,21 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
+        var spectralTypes = [String: Int16]()
+        
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
-            return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
+            return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, spectralTypes: &spectralTypes)
         }
+        
+        self.spectralTypes = spectralTypes.sorted(by: { (a, b) -> Bool in
+            return a.value < b.value
+        }).map { $0.key }
+        
+        print("Found \(self.spectralTypes.count) distinct spectral types")
         
         return stars
     }

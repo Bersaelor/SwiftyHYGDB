@@ -18,7 +18,7 @@ extension RadialStar: CSVWritable {
 
 /// High performance initializer
 extension RadialStar {
-    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil) {
+    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Float? = nil, spectralTypes: inout [String: Int16]) {
         var index = 0
         
         guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
@@ -46,6 +46,17 @@ extension RadialStar {
         
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
+        
+        var spectralTypeNr: Int16 = -1
+        if let spectralType = spectralType {
+            if let existingValueNr = spectralTypes[spectralType] {
+                spectralTypeNr = existingValueNr
+            } else {
+                spectralTypeNr = Int16(spectralTypes.count)
+                spectralTypes[spectralType] = spectralTypeNr
+            }
+        }
+        
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 db_id: dbID,
@@ -56,7 +67,7 @@ extension RadialStar {
                                 bayer_flamstedt: bayerFlamstedt,
                                 properName: properName,
                                 distance: dist, rv: rv,
-                                mag: mag, absmag: absmag, spectralType: spectralType, colorIndex: colorIndex)
+                                mag: mag, absmag: absmag, spectralType: spectralTypeNr, colorIndex: colorIndex)
         self.starData = Box(starData)
     }
 }

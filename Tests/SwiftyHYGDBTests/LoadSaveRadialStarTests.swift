@@ -105,9 +105,11 @@ class LoadSaveRadialStarTests: XCTestCase {
         let expectedDec = initialDec + perYearMilliArcSecondsDec * Double(yearsToAdvance) / (1000 * 13600)
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
+        var spectralTypes = [String: Int16]()
+
         if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
             defer { free(linePtr) }
-            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance)
+            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, spectralTypes: &spectralTypes)
             guard let ra = star?.starData?.value.right_ascension, let dec = star?.starData?.value.declination else {
                 XCTFail("Failed to load starData dbID 2 in row 3")
                 return
