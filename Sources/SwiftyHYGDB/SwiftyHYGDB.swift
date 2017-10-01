@@ -55,11 +55,6 @@ public class SwiftyHYGDB: NSObject {
         self.properNames = indexers.properNames.indexedValues()
         self.bayerFlamstedts = indexers.bayerFlamstedts.indexedValues()
         self.spectralTypes = indexers.spectralTypes.indexedValues()
-        
-        print("Found \(self.glIds.count) distinct glIds")
-        print("Found \(self.properNames.count) distinct properNames")
-        print("Found \(self.bayerFlamstedts.count) distinct bayerFlamstedts")
-        print("Found \(self.spectralTypes.count) distinct spectral types")
 
         return stars
     }
