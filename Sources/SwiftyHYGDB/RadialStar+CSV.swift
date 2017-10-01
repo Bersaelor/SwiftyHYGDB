@@ -54,7 +54,7 @@ extension RadialStar {
                                 hd_id: hd_id,
                                 hr_id: hr_id,
                                 gl_id: indexers.glIds.index(for: gl_id),
-                                bayer_flamstedt: indexers.bayerFlamstedtValues.index(for: bayerFlamstedt),
+                                bayer_flamstedt: indexers.bayerFlamstedts.index(for: bayerFlamstedt),
                                 properName: indexers.properNames.index(for: properName),
                                 distance: dist, rv: rv,
                                 mag: mag, absmag: absmag,

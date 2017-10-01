@@ -40,7 +40,8 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
-        var indexers = SwiftyDBValueIndexers()
+        var indexers = SwiftyDBValueIndexers(glValues: glIds, spectralValues: spectralTypes,
+                                             bfValues: bayerFlamstedts, pNValues: properNames)
         
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
@@ -52,7 +53,7 @@ public class SwiftyHYGDB: NSObject {
 
         self.glIds = indexers.glIds.indexedValues()
         self.properNames = indexers.properNames.indexedValues()
-        self.bayerFlamstedts = indexers.bayerFlamstedtValues.indexedValues()
+        self.bayerFlamstedts = indexers.bayerFlamstedts.indexedValues()
         self.spectralTypes = indexers.spectralTypes.indexedValues()
         
         print("Found \(self.glIds.count) distinct glIds")
@@ -91,7 +92,7 @@ public class SwiftyHYGDB: NSObject {
         
         self.glIds = indexers.glIds.indexedValues()
         self.properNames = indexers.spectralTypes.indexedValues()
-        self.bayerFlamstedts = indexers.bayerFlamstedtValues.indexedValues()
+        self.bayerFlamstedts = indexers.bayerFlamstedts.indexedValues()
         self.spectralTypes = indexers.spectralTypes.indexedValues()
         
         return stars
@@ -104,11 +105,26 @@ public class SwiftyHYGDB: NSObject {
     }
 }
 
+extension String: IndexerValue {
+    func isValid() -> Bool {
+        return !isEmpty
+    }
+}
+
 struct SwiftyDBValueIndexers {
     var glIds: Indexer<String> = Indexer()
     var spectralTypes: Indexer<String> = Indexer()
-    var bayerFlamstedtValues: Indexer<String> = Indexer()
+    var bayerFlamstedts: Indexer<String> = Indexer()
     var properNames: Indexer<String> = Indexer()
+}
+
+extension SwiftyDBValueIndexers {
+    init(glValues: [String], spectralValues: [String], bfValues: [String], pNValues: [String]) {
+        glIds = Indexer(existingValues: glValues)
+        spectralTypes = Indexer(existingValues: spectralValues)
+        bayerFlamstedts = Indexer(existingValues: bfValues)
+        properNames = Indexer(existingValues: pNValues)
+    }
 }
 
 public protocol CSVWritable {

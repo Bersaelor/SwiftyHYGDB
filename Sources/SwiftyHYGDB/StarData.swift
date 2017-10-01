@@ -83,11 +83,11 @@ extension StarData {
     }
     
     public func getBayerFlamstedt() -> String {
-        return bayer_flamstedt != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(bayer_flamstedt)] : ""
+        return bayer_flamstedt != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.bayerFlamstedts[Int(bayer_flamstedt)] : ""
     }
     
     public func getProperName() -> String {
-        return properName != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(properName)] : ""
+        return properName != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.properNames[Int(properName)] : ""
     }
     
     public func getSpectralType() -> String {
