@@ -9,7 +9,12 @@ import Foundation
 
 public class SwiftyHYGDB: NSObject {
     public static let maxVisibleMag: Float = 6.5
-    
+ 
+    static let missingValueIndex: Int = -1
+
+    static var glIds: [String] = []
+    static var properNames: [String] = []
+    static var bayerFlamstedts: [String] = []
     static var spectralTypes: [String] = []
     
     private static var yearsSinceEraStart: Int {
@@ -35,22 +40,26 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
-        var spectralTypes = [String: Int16]()
+        var indexers = SwiftyDBValueIndexers()
         
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
-            return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, spectralTypes: &spectralTypes)
+            return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
         }
+
+        self.glIds = indexers.glIds.indexedValues()
+        self.properNames = indexers.properNames.indexedValues()
+        self.bayerFlamstedts = indexers.bayerFlamstedtValues.indexedValues()
+        self.spectralTypes = indexers.spectralTypes.indexedValues()
         
-        self.spectralTypes = spectralTypes.sorted(by: { (a, b) -> Bool in
-            return a.value < b.value
-        }).map { $0.key }
-        
+        print("Found \(self.glIds.count) distinct glIds")
+        print("Found \(self.properNames.count) distinct properNames")
+        print("Found \(self.bayerFlamstedts.count) distinct bayerFlamstedts")
         print("Found \(self.spectralTypes.count) distinct spectral types")
-        
+
         return stars
     }
     
@@ -70,13 +79,20 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
+        var indexers = SwiftyDBValueIndexers()
+        
         let yearsToAdvance = precess ? Double(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
         let stars = lines.dropFirst().flatMap { linePtr -> Star3D? in
             defer { free(linePtr) }
-            return Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance)
+            return Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
         }
+        
+        self.glIds = indexers.glIds.indexedValues()
+        self.properNames = indexers.spectralTypes.indexedValues()
+        self.bayerFlamstedts = indexers.bayerFlamstedtValues.indexedValues()
+        self.spectralTypes = indexers.spectralTypes.indexedValues()
         
         return stars
     }
@@ -86,7 +102,13 @@ public class SwiftyHYGDB: NSObject {
         let fileString = lines.joined(separator: "\n")
         try fileString.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
     }
+}
 
+struct SwiftyDBValueIndexers {
+    var glIds: Indexer<String> = Indexer()
+    var spectralTypes: Indexer<String> = Indexer()
+    var bayerFlamstedtValues: Indexer<String> = Indexer()
+    var properNames: Indexer<String> = Indexer()
 }
 
 public protocol CSVWritable {

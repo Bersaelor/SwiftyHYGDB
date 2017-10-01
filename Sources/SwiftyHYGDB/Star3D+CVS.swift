@@ -22,7 +22,7 @@ extension Star3D: CSVWritable {
 
 /// High performance initializer
 extension Star3D {
-    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Double? = nil) {
+    init? (rowPtr: UnsafeMutablePointer<CChar>, advanceByYears: Double? = nil, indexers: inout SwiftyDBValueIndexers) {
         var index = 0
         
         guard let dbID: Int32 = readNumber(at: &index, stringPtr: rowPtr) else { return nil }
@@ -64,19 +64,19 @@ extension Star3D {
         self.y = y
         self.z = z
         
-        let spectralTypeNr = Int16(2)
-        
         let starData = StarData(right_ascension: right_ascension,
                                 declination: declination,
                                 db_id: dbID,
                                 hip_id: hip_id,
                                 hd_id: hd_id,
                                 hr_id: hr_id,
-                                gl_id: gl_id,
-                                bayer_flamstedt: bayerFlamstedt,
-                                properName: properName,
+                                gl_id: indexers.glIds.index(for: gl_id),
+                                bayer_flamstedt: indexers.bayerFlamstedtValues.index(for: bayerFlamstedt),
+                                properName: indexers.properNames.index(for: properName),
                                 distance: dist, rv: rv,
-                                mag: mag, absmag: absmag, spectralType: spectralTypeNr, colorIndex: colorIndex)
+                                mag: mag, absmag: absmag,
+                                spectralType: indexers.spectralTypes.index(for: spectralType),
+                                colorIndex: colorIndex)
         self.starData = Box(starData)
     }
 }

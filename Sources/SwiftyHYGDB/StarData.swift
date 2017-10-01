@@ -21,9 +21,9 @@ public struct StarData: Codable {
     public let absmag: Float
     public let colorIndex: Float
     public let spectralType: Int16
-    public let gl_id: [CChar]
-    public let bayer_flamstedt: [CChar]
-    public let properName: [CChar]
+    public let gl_id: Int16
+    public let bayer_flamstedt: Int16
+    public let properName: Int16
     public let distance: Double
 
     enum CodingKeys: String, CodingKey {
@@ -51,18 +51,13 @@ extension StarData {
          hip_id: Int32?,
          hd_id: Int32?,
          hr_id: Int32?,
-         gl_id: String?,
-         bayer_flamstedt: String?,
-         properName: String?,
+         gl_id: Int16,
+         bayer_flamstedt: Int16,
+         properName: Int16,
          distance: Double,
          rv: Float?,
          mag: Float, absmag: Float,
          spectralType: Int16, colorIndex: Float?) {
-
-//        print("gl_id: \(gl_id ?? "?")"
-//            + "bayer_flamstedt: \(bayer_flamstedt ?? "?")"
-//            + "properName: \(properName ?? "?")"
-//            + "spectralType: \(spectralType ?? "?")")
         
         self.right_ascension = right_ascension
         self.declination = declination
@@ -70,9 +65,9 @@ extension StarData {
         self.hip_id = hip_id ?? -1
         self.hd_id = hd_id ?? -1
         self.hr_id = hr_id ?? -1
-        self.gl_id = (gl_id ?? "").cString(using: .utf8) ?? []
-        self.bayer_flamstedt = (bayer_flamstedt ?? "").cString(using: .utf8) ?? []
-        self.properName = (properName ?? "").cString(using: .utf8) ?? []
+        self.gl_id = gl_id
+        self.bayer_flamstedt = bayer_flamstedt
+        self.properName = properName
         self.distance = distance
         self.rv = rv ?? 0
         self.mag = mag
@@ -84,15 +79,15 @@ extension StarData {
 
 extension StarData {
     public func getGlId() -> String {
-        return String(cString: gl_id)
+        return gl_id != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(gl_id)] : ""
     }
     
     public func getBayerFlamstedt() -> String {
-        return String(cString: gl_id)
+        return bayer_flamstedt != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(bayer_flamstedt)] : ""
     }
     
     public func getProperName() -> String {
-        return String(cString: properName)
+        return properName != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(properName)] : ""
     }
     
     public func getSpectralType() -> String {
@@ -107,7 +102,7 @@ extension StarData {
         result.append((hd_id != -1 ? hd_id.description : "").appending(","))
         result.append((hr_id != -1 ? hr_id.description : "").appending(","))
         result.append(getGlId().appending(","))
-        result.append((String(cString: bayer_flamstedt)).appending(","))
+        result.append(getBayerFlamstedt().appending(","))
         result.append(getProperName().appending(","))
         result.append(right_ascension.compressedString.appending(","))
         result.append(declination.compressedString.appending(","))

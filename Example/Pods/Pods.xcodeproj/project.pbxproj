@@ -15,6 +15,7 @@
 		3F1306093796BE7DCA94463568AAE1DD /* Star3D+CVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFF07F69BA0C0FAA387DA5D756DBD9D /* Star3D+CVS.swift */; };
 		5E2C0E615F51CF57FB5390359BF27ECC /* RadialStar+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F568C4D2F9BF306294908D32DFDE2B /* RadialStar+CSV.swift */; };
 		69C7BE4C1F21A64C5E0C18B43445532F /* Star3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD31671BF9A137217945E005D559086F /* Star3D.swift */; };
+		71812F801F80D3E60067C27E /* Indexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71812F7F1F80D3E60067C27E /* Indexer.swift */; };
 		78203388ADB34B896349D357A0710D5A /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54E333A3C6F71F89217F587BB9A455 /* Point3D.swift */; };
 		79F0838BBD919DB4714F35D1E3884CED /* SwiftyHYGDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF27EBA52D6BAE2C4D2C1A6E03E4E846 /* SwiftyHYGDB-dummy.m */; };
 		7F8B2AB0E1FD39321D2B75980074F6A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -63,6 +64,7 @@
 		5BC0C0B482FB03CC03F9EF050230E79F /* Pods-SwiftyHYGDB_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftyHYGDB_Tests.modulemap"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6820A2066D02448117555EE185041987 /* Pods-SwiftyHYGDB_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyHYGDB_Tests-umbrella.h"; sourceTree = "<group>"; };
+		71812F7F1F80D3E60067C27E /* Indexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Indexer.swift; path = Sources/SwiftyHYGDB/Indexer.swift; sourceTree = "<group>"; };
 		82501046157CDAFE3A22D34E4A5331B2 /* Pods-SwiftyHYGDB_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyHYGDB_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		86769EE5750B00F7EE00504C4E302FCD /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		895AA05609FF6A7A3F39F721B397DEA9 /* Star3D+Codable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Star3D+Codable.swift"; path = "Sources/SwiftyHYGDB/Star3D+Codable.swift"; sourceTree = "<group>"; };
@@ -205,7 +207,9 @@
 		AE1DEBDA9D891725504E65DF44D0BF22 /* SwiftyHYGDB */ = {
 			isa = PBXGroup;
 			children = (
+				5A6E2F725B35FF5CEF52B9A2F054E7D0 /* SwiftyHYGDB.swift */,
 				082A5BF75EE7A4C8FAF1926F72E6DB0F /* Box.swift */,
+				71812F7F1F80D3E60067C27E /* Indexer.swift */,
 				0343CC3A459CE999556092EB979B9478 /* FloatingPoint+CompressedString.swift */,
 				1701F07C9B328CAA0ED1598A53E9C91F /* LineGenerator.swift */,
 				4B54E333A3C6F71F89217F587BB9A455 /* Point3D.swift */,
@@ -216,7 +220,6 @@
 				895AA05609FF6A7A3F39F721B397DEA9 /* Star3D+Codable.swift */,
 				DBFF07F69BA0C0FAA387DA5D756DBD9D /* Star3D+CVS.swift */,
 				36100628B5702BE1D2AF75BACFC14642 /* StarData.swift */,
-				5A6E2F725B35FF5CEF52B9A2F054E7D0 /* SwiftyHYGDB.swift */,
 				552ECBF6E18E747ECD9448EDD8F8F3EB /* Support Files */,
 			);
 			name = SwiftyHYGDB;
@@ -381,6 +384,7 @@
 				3F1306093796BE7DCA94463568AAE1DD /* Star3D+CVS.swift in Sources */,
 				69C7BE4C1F21A64C5E0C18B43445532F /* Star3D.swift in Sources */,
 				FC1675AF49E23B0E8E00E74532047828 /* StarData.swift in Sources */,
+				71812F801F80D3E60067C27E /* Indexer.swift in Sources */,
 				79F0838BBD919DB4714F35D1E3884CED /* SwiftyHYGDB-dummy.m in Sources */,
 				9B2D02E4BC983662801ABEEE50FA3407 /* SwiftyHYGDB.swift in Sources */,
 			);
@@ -500,7 +504,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

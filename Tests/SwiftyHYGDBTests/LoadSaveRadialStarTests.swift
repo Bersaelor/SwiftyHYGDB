@@ -105,11 +105,11 @@ class LoadSaveRadialStarTests: XCTestCase {
         let expectedDec = initialDec + perYearMilliArcSecondsDec * Double(yearsToAdvance) / (1000 * 13600)
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
-        var spectralTypes = [String: Int16]()
+        var indexers = SwiftyDBValueIndexers()
 
         if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
             defer { free(linePtr) }
-            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, spectralTypes: &spectralTypes)
+            let star = RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
             guard let ra = star?.starData?.value.right_ascension, let dec = star?.starData?.value.declination else {
                 XCTFail("Failed to load starData dbID 2 in row 3")
                 return
@@ -186,9 +186,11 @@ class LoadSaveRadialStarTests: XCTestCase {
         let expectedPoint = initialPoint +  perYearParsecs
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
+        var indexers = SwiftyDBValueIndexers()
+
         if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
             defer { free(linePtr) }
-            guard let star = Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance) else {
+            guard let star = Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers) else {
                 XCTFail("failed to load star from rowPtr")
                 return
             }

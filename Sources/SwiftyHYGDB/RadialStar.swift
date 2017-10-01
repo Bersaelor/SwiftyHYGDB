@@ -18,7 +18,7 @@ public struct RadialStar {
 
 extension RadialStar {
     
-    public init? (row: String, advanceByYears: Float? = nil) {
+    init? (row: String, advanceByYears: Float? = nil, indexers: inout SwiftyDBValueIndexers) {
         let fields = row.components(separatedBy: ",")
         
         guard fields.count > 13 else {
@@ -41,8 +41,6 @@ extension RadialStar {
             RadialStar.precess(right_ascension: &right_ascension, declination: &declination, pmra: pmra, pmdec: pmdec, advanceByYears: advanceByYears)
         }
         
-        var spectralTypeNr=Int16(2)
-        
         self.normalizedAscension = RadialStar.normalize(rightAscension: right_ascension)
         self.normalizedDeclination = RadialStar.normalize(declination: declination)
         let starData = StarData(right_ascension: right_ascension,
@@ -51,11 +49,13 @@ extension RadialStar {
                                 hip_id: Int32(fields[1]),
                                 hd_id: Int32(fields[2]),
                                 hr_id: Int32(fields[3]),
-                                gl_id: fields[4],
-                                bayer_flamstedt: fields[5],
-                                properName: fields[6],
+                                gl_id: indexers.glIds.index(for: fields[4]),
+                                bayer_flamstedt: indexers.glIds.index(for: fields[5]),
+                                properName: indexers.glIds.index(for: fields[6]),
                                 distance: dist, rv: Float(fields[12]),
-                                mag: mag, absmag: absmag, spectralType: spectralTypeNr, colorIndex: Float(fields[15]))
+                                mag: mag, absmag: absmag,
+                                spectralType: indexers.glIds.index(for: fields[14]),
+                                colorIndex: Float(fields[15]))
         self.starData = Box(starData)
     }
     

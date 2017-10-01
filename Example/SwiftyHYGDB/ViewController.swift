@@ -39,23 +39,6 @@ class ViewController: UIViewController {
             self?.stars = stars
             print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
 
-            let longestGlId = stars?.reduce("", { (res, star) -> String in
-                if (star.starData?.value.bayer_flamstedt.count ?? 0) > res.count {
-                    return star.starData?.value.getBayerFlamstedt() ?? ""
-                } else { return res }
-            }) ?? ""
-            
-//            let smallestRV = stars?.reduce(Double.infinity, { (res, star) -> Double in
-//                return min(res, star.starData?.value.rv ?? 0)
-//            }) ?? 0
-
-//            let longestSpectral = stars?.reduce("0", { (res, star) -> String in
-//                if (star.starData?.value.spectralType.count ?? 0) > res.count {
-//                    return star.starData?.value.spectralType ?? ""
-//                } else { return res }
-//            })
-
-            print("Longest gl_id: \(longestGlId)")
             DispatchQueue.main.async {
                 self?.saveStars(fileName: "visibleStars.csv",
                                 predicate: { $0.starData?.value.mag ?? Float.infinity < SwiftyHYGDB.maxVisibleMag })
