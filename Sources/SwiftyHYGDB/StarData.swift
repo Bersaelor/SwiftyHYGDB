@@ -12,6 +12,10 @@ import Foundation
 public struct StarData: Codable {
     public let right_ascension: Float
     public let declination: Float
+    public let spectralType: Int16
+    public let gl_id: Int16
+    public let bayer_flamstedt: Int16
+    public let properName: Int16
     public let db_id: Int32
     public let hip_id: Int32
     public let hd_id: Int32
@@ -20,10 +24,7 @@ public struct StarData: Codable {
     public let mag: Float
     public let absmag: Float
     public let colorIndex: Float
-    public let spectralType: Int16
-    public let gl_id: Int16
-    public let bayer_flamstedt: Int16
-    public let properName: Int16
+
     public let distance: Double
 
     enum CodingKeys: String, CodingKey {
