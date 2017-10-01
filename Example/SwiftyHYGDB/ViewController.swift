@@ -11,8 +11,16 @@ import SwiftyHYGDB
 
 class ViewController: UIViewController {
 
-    var stars: [RadialStar]?
-    var visibleStars: [RadialStar]?
+    var stars: [RadialStar]? {
+        didSet {
+            oldValue?.forEach { $0.starData?.ref.release() }
+        }
+    }
+    var visibleStars: [RadialStar]? {
+        didSet {
+            oldValue?.forEach { $0.starData?.ref.release() }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +44,8 @@ class ViewController: UIViewController {
         DispatchQueue.global(qos: .background).async { [weak self] in
             let startLoading = Date()
             let stars: [RadialStar]? = SwiftyHYGDB.loadCSVData(from: filePath, precess: true)
-            self?.stars = stars
             print("Time to load \(stars?.count ?? 0) stars: \(Date().timeIntervalSince(startLoading))s")
+            self?.stars = stars
 
             DispatchQueue.main.async {
                 self?.saveStars(fileName: "visibleStars.csv",
