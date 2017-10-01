@@ -10,8 +10,12 @@ import Foundation
 import SwiftyHYGDB
 
 let accuracy: Float = {
-    if #available(iOS 11, *) { return Float.ulpOfOne
-    } else { return 35 * Float.ulpOfOne }
+    #if os(iOS)
+        if #available(iOS 11, *) { return Float.ulpOfOne }
+        else { return 35 * Float.ulpOfOne }
+    #else
+        return 35 * Float.ulpOfOne
+    #endif
 }()
 
 extension StarData {
@@ -25,17 +29,16 @@ extension StarData {
             && starData.bayer_flamstedt == self.bayer_flamstedt
             && starData.properName == self.properName
             && abs(starData.distance - self.distance) < Double.ulpOfOne
-            && abs((starData.rv ?? 0) - (self.rv ?? 0)) < Double.ulpOfOne
-            && abs(starData.mag - self.mag) < Double.ulpOfOne
-            && abs(starData.absmag - self.absmag) < Double.ulpOfOne
+            && abs((starData.rv) - (self.rv)) < Float.ulpOfOne
+            && abs(starData.mag - self.mag) < Float.ulpOfOne
+            && abs(starData.absmag - self.absmag) < Float.ulpOfOne
             && starData.spectralType == self.spectralType
-            && abs((starData.colorIndex ?? 0) - (self.colorIndex ?? 0)) < Float.ulpOfOne
+            && abs((starData.colorIndex) - (self.colorIndex)) < Float.ulpOfOne
     }
 }
 
 extension RadialStar {
     func isIdentical(star: RadialStar) -> Bool {
-        if dbID != star.dbID { return false }
         if abs(normalizedAscension - star.normalizedAscension) > 1 * Float.ulpOfOne { return false }
         if abs(normalizedDeclination - star.normalizedDeclination) > 1 * Float.ulpOfOne { return false }
         
@@ -60,4 +63,30 @@ extension Star3D {
         
         return starData.isIdentical(starData: otherStarData)
     }
+}
+
+extension String {
+    static private let separatorCharacter: Character = "/"
+    static let separator = String(separatorCharacter)
+
+    static func getOriginalRepositoryPath() -> String? {
+        // this file is at
+        // <original repository directory>/Sources/Kitura/staticFileServer/ResourcePathHandler.swift
+        // the original repository directory is four path components up
+        let currentFilePath = #file
+        
+        var pathComponents =
+            currentFilePath.characters.split(separator: separatorCharacter).map(String.init)
+        let numberOfComponentsFromKituraRepositoryDirectoryToThisFile = 3
+        
+        guard pathComponents.count >= numberOfComponentsFromKituraRepositoryDirectoryToThisFile else {
+            print("unable to get original repository path for \(currentFilePath)")
+            return nil
+        }
+        
+        pathComponents.removeLast(numberOfComponentsFromKituraRepositoryDirectoryToThisFile)
+        
+        return separator + pathComponents.joined(separator: separator)
+    }
+
 }

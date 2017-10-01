@@ -15,7 +15,7 @@
 		607FACEC1AFB9204008FA782 /* LoadSaveRadialStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */; };
 		687CE62BEAAFA141F1481A75 /* Pods_SwiftyHYGDB_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */; };
 		714AC2C71F65F4CF00E40D51 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7177EE9E1F65DA2C0046B3AB /* hygdata_v3.csv */; };
-		71BFB6851F6D742B00EF7C76 /* Testhelper+StarIdentical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFB6841F6D742B00EF7C76 /* Testhelper+StarIdentical.swift */; };
+		718ED8BC1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */; };
 		A307FB4DB4408439A75AADF9 /* Pods_SwiftyHYGDB_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2955F986BB99FA7628A2CF0F /* Pods_SwiftyHYGDB_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +41,11 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwiftyHYGDB_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyHYGDB_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSaveRadialStarTests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadSaveRadialStarTests.swift; path = ../../Tests/SwiftyHYGDBTests/LoadSaveRadialStarTests.swift; sourceTree = "<group>"; };
 		7177EE9E1F65DA2C0046B3AB /* hygdata_v3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = hygdata_v3.csv; sourceTree = "<group>"; };
 		717B37221F6ECB8E00861B51 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
-		71BFB6841F6D742B00EF7C76 /* Testhelper+StarIdentical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Testhelper+StarIdentical.swift"; sourceTree = "<group>"; };
+		718ED8B81F7BD8A20076FD26 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = ../../Tests/LinuxMain.swift; sourceTree = "<group>"; };
+		718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Testhelper+StarIdentical.swift"; path = "../../Tests/SwiftyHYGDBTests/Testhelper+StarIdentical.swift"; sourceTree = "<group>"; };
 		7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftyHYGDB.podspec; path = ../SwiftyHYGDB.podspec; sourceTree = "<group>"; };
 		92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25476473A7BC174CE21581B /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,8 +142,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				718ED8B81F7BD8A20076FD26 /* LinuxMain.swift */,
 				607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */,
-				71BFB6841F6D742B00EF7C76 /* Testhelper+StarIdentical.swift */,
+				718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -389,8 +391,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				718ED8BC1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* LoadSaveRadialStarTests.swift in Sources */,
-				71BFB6851F6D742B00EF7C76 /* Testhelper+StarIdentical.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
