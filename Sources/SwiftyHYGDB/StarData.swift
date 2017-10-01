@@ -78,20 +78,20 @@ extension StarData {
 }
 
 extension StarData {
-    public func getGlId() -> String {
-        return gl_id != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(gl_id)] : ""
+    public func getGlId() -> String? {
+        return gl_id != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.glIds[Int(gl_id)] : nil
     }
     
-    public func getBayerFlamstedt() -> String {
-        return bayer_flamstedt != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.bayerFlamstedts[Int(bayer_flamstedt)] : ""
+    public func getBayerFlamstedt() -> String? {
+        return bayer_flamstedt != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.bayerFlamstedts[Int(bayer_flamstedt)] : nil
     }
     
-    public func getProperName() -> String {
-        return properName != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.properNames[Int(properName)] : ""
+    public func getProperName() -> String? {
+        return properName != SwiftyHYGDB.missingValueIndex ? SwiftyHYGDB.properNames[Int(properName)] : nil
     }
     
-    public func getSpectralType() -> String {
-        return spectralType >= 0 ? SwiftyHYGDB.spectralTypes[Int(spectralType)] : ""
+    public func getSpectralType() -> String? {
+        return spectralType >= 0 ? SwiftyHYGDB.spectralTypes[Int(spectralType)] : nil
     }
 }
 
@@ -101,16 +101,16 @@ extension StarData {
         result.append((hip_id != -1 ? hip_id.description : "").appending(","))
         result.append((hd_id != -1 ? hd_id.description : "").appending(","))
         result.append((hr_id != -1 ? hr_id.description : "").appending(","))
-        result.append(getGlId().appending(","))
-        result.append(getBayerFlamstedt().appending(","))
-        result.append(getProperName().appending(","))
+        result.append((getGlId() ?? "").appending(","))
+        result.append((getBayerFlamstedt() ?? "").appending(","))
+        result.append((getProperName() ?? "").appending(","))
         result.append(right_ascension.compressedString.appending(","))
         result.append(declination.compressedString.appending(","))
         result.append(distance.compressedString.appending(","))
         result.append((rv.compressedString).appending(","))
         result.append(mag.compressedString.appending(","))
         result.append(absmag.compressedString.appending(","))
-        result.append(getSpectralType().appending(","))
+        result.append((getSpectralType() ?? "").appending(","))
         result.append((colorIndex.compressedString).appending(","))
         return result
     }
