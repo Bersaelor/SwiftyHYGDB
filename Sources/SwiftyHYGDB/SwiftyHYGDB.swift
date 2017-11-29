@@ -86,7 +86,7 @@ public class SwiftyHYGDB: NSObject {
         }
         
         self.glIds = indexers.glIds.indexedValues()
-        self.properNames = indexers.spectralTypes.indexedValues()
+        self.properNames = indexers.properNames.indexedValues()
         self.bayerFlamstedts = indexers.bayerFlamstedts.indexedValues()
         self.spectralTypes = indexers.spectralTypes.indexedValues()
         
