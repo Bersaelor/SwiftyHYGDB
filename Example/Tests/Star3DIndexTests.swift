@@ -44,7 +44,7 @@ class Star3DIndexTests: XCTestCase {
 
     func testAltair() {
         guard let vega = originalStar3Ds?.first(where: { $0.dbID == 97338 }) else {
-            XCTFail("Database should have an entry for vega, id 90979")
+            XCTFail("Database should have an entry for Altair, id 97338")
             return
         }
         guard let starData = vega.starData?.value else { XCTFail("Failed to get stardata"); return }
@@ -57,7 +57,7 @@ class Star3DIndexTests: XCTestCase {
 
     func testUnnamedStar() {
         guard let vega = originalStar3Ds?.first(where: { $0.dbID == 35244 }) else {
-            XCTFail("Database should have an entry for vega, id 35244")
+            XCTFail("Database should have an entry for Unnamed Star, id 35244")
             return
         }
         guard let starData = vega.starData?.value else { XCTFail("Failed to get stardata"); return }
