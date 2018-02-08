@@ -75,8 +75,7 @@ extension String {
         // the original repository directory is four path components up
         let currentFilePath = #file
         
-        var pathComponents =
-            currentFilePath.characters.split(separator: separatorCharacter).map(String.init)
+        var pathComponents = currentFilePath.split(separator: separatorCharacter).map(String.init)
         let numberOfComponentsFromKituraRepositoryDirectoryToThisFile = 3
         
         guard pathComponents.count >= numberOfComponentsFromKituraRepositoryDirectoryToThisFile else {
