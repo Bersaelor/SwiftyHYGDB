@@ -16,6 +16,7 @@
 		687CE62BEAAFA141F1481A75 /* Pods_SwiftyHYGDB_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */; };
 		714AC2C71F65F4CF00E40D51 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7177EE9E1F65DA2C0046B3AB /* hygdata_v3.csv */; };
 		718ED8BC1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */; };
+		71B4BA32202CB95D00B8E926 /* Star3DIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4BA31202CB95D00B8E926 /* Star3DIndexTests.swift */; };
 		A307FB4DB4408439A75AADF9 /* Pods_SwiftyHYGDB_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2955F986BB99FA7628A2CF0F /* Pods_SwiftyHYGDB_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		717B37221F6ECB8E00861B51 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		718ED8B81F7BD8A20076FD26 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = ../../Tests/LinuxMain.swift; sourceTree = "<group>"; };
 		718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Testhelper+StarIdentical.swift"; path = "../../Tests/SwiftyHYGDBTests/Testhelper+StarIdentical.swift"; sourceTree = "<group>"; };
+		71B4BA31202CB95D00B8E926 /* Star3DIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star3DIndexTests.swift; sourceTree = "<group>"; };
 		7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftyHYGDB.podspec; path = ../SwiftyHYGDB.podspec; sourceTree = "<group>"; };
 		92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A25476473A7BC174CE21581B /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				718ED8B81F7BD8A20076FD26 /* LinuxMain.swift */,
 				607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */,
+				71B4BA31202CB95D00B8E926 /* Star3DIndexTests.swift */,
 				718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -391,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B4BA32202CB95D00B8E926 /* Star3DIndexTests.swift in Sources */,
 				718ED8BC1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* LoadSaveRadialStarTests.swift in Sources */,
 			);
