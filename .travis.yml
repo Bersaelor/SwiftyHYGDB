@@ -23,3 +23,5 @@ matrix:
       env: TEST_DESTINATION="OS=9.3,name=iPhone 6"
       install:
         - ./install_swiftlint.sh
+      script:
+        - set -o pipefail && xcodebuild test -workspace Example/SwiftyHYGDB.xcworkspace -scheme SwiftyHYGDB-Example -destination "$TEST_DESTINATION" | xcpretty

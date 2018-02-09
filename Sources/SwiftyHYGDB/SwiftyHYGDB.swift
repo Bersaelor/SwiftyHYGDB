@@ -75,8 +75,9 @@ public class SwiftyHYGDB: NSObject {
         }
         defer { fclose(fileHandle) }
         
-        var indexers = SwiftyDBValueIndexers()
-        
+        var indexers = SwiftyDBValueIndexers(glValues: glIds, spectralValues: spectralTypes,
+                                             bfValues: bayerFlamstedts, pNValues: properNames)
+
         let yearsToAdvance = precess ? Double(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
         var count = 0
