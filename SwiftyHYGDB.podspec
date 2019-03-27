@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftyHYGDB'
-  s.version          = '0.7.0'
+  s.version          = '0.7.1'
   s.summary          = 'A Swift library to work with the astronexus.com HYG database of stars'
 
 # This description is used to generate tags and improve search results.
@@ -22,6 +22,8 @@ Helper library with `struct Star` representing stars from the astronexus.com HYG
                         DESC
 
   s.homepage         = 'https://github.com/Bersaelor/SwiftyHYGDB'
+  s.swift_version = '5.0'
+
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Bersaelor' => 'konrad@mathheartcode.com' }
   s.source           = { :git => 'https://github.com/Bersaelor/SwiftyHYGDB.git', :tag => s.version.to_s }
