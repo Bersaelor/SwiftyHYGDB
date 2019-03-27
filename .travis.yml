@@ -11,16 +11,7 @@ matrix:
       osx_image: xcode10.2
       sudo: required
       language: objective-c
-      env: TEST_DESTINATION="OS=12.0,name=iPhone 7"
-      install:
-        - ./install_swiftlint.sh
-      script:
-        - set -o pipefail && xcodebuild test -workspace Example/SwiftyHYGDB.xcworkspace -scheme SwiftyHYGDB-Example -destination "$TEST_DESTINATION" | xcpretty
-    - os: osx
-      osx_image: xcode10.2
-      sudo: required
-      language: objective-c
-      env: TEST_DESTINATION="OS=9.3,name=iPhone 6"
+      env: TEST_DESTINATION="OS=12.2,name=iPhone X"
       install:
         - ./install_swiftlint.sh
       script:
