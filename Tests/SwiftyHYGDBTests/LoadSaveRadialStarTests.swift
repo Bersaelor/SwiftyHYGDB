@@ -43,7 +43,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         XCTAssertEqual(stars.count, starsCountInCSV, "Excpected hygdata_v3 to have \(starsCountInCSV) stars")
         self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStarFileName)
         let path = self.filePath(for: LoadSaveRadialStarTests.allStarFileName)
-        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(filePath)")
+        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(path)")
     }
     
     func test_02_ReloadRadialStars() {
@@ -68,7 +68,7 @@ class LoadSaveRadialStarTests: XCTestCase {
         XCTAssertEqual(stars.count, starsCountInCSV, "Expected hygdata_v3 to have \(starsCountInCSV) stars")
         self.saveStars(stars: stars, fileName: LoadSaveRadialStarTests.allStar3DFileName)
         let path = self.filePath(for: LoadSaveRadialStarTests.allStarFileName)
-        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(filePath)")
+        XCTAssertTrue(FileManager().fileExists(atPath: path), "File should exist at \(path)")
     }
     
     func test_05_Reload3DStars() {
@@ -206,7 +206,7 @@ class LoadSaveRadialStarTests: XCTestCase {
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
         guard let stars = stars else { return }
 
-        print("Writing \(stars.count) stars to file \( filePath )")
+        print("Writing \(stars.count) stars to file \( fileName )")
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
@@ -218,7 +218,7 @@ class LoadSaveRadialStarTests: XCTestCase {
     private func saveStars(stars: [Star3D]?, fileName: String, predicate: ((Star3D) -> Bool)? = nil ) {
         guard let stars = stars else { return }
 
-        print("Writing \(stars.count) stars to file \( filePath )")
+        print("Writing \(stars.count) stars to file \( fileName)")
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
