@@ -19,11 +19,27 @@ class LoadSaveRadialStarTests: XCTestCase {
     }()
     func filePath(for fileName: String) -> String {
         #if os(iOS)
-            guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-                let filePath = NSURL(fileURLWithPath: path).appendingPathComponent(fileName) else { return "" }
-            return filePath.path
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths.first?.appendingPathComponent(fileName).path ?? ""
         #else
-            return String.getOriginalRepositoryPath()! + String.separator + fileName
+        return String.getOriginalRepositoryPath()! + String.separator + fileName
+        #endif
+    }
+    
+    override func setUp() {
+        super.setUp()
+        
+        // set up the documents folder if it doesn't exist
+        #if os(iOS)
+        guard let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        if !FileManager.default.fileExists(atPath: documents.path) {
+            do {
+                print("Creating documents folder at \(documents)")
+                try FileManager.default.createDirectory(at: documents, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("ERROR: Failed to create documents folder due to \(error)")
+            }
+        }
         #endif
     }
     
@@ -203,12 +219,12 @@ class LoadSaveRadialStarTests: XCTestCase {
     
     private func saveStars(stars: [RadialStar]?, fileName: String, predicate: ((RadialStar) -> Bool)? = nil ) {
         guard let stars = stars else { return }
-
-        print("Writing \(stars.count) stars to file \( fileName )")
+        let path = self.filePath(for: fileName)
+        print("Writing \(stars.count) stars to path \( path )")
         do {
             let startLoading = Date()
             let visibleStars = predicate.flatMap({ stars.filter($0) }) ?? stars
-            try SwiftyHYGDB.save(stars: visibleStars, to: self.filePath(for: fileName))
+            try SwiftyHYGDB.save(stars: visibleStars, to: path)
             print("Writing  took \( Date().timeIntervalSince(startLoading) )")
         } catch { print("Error trying to saving stars: \( error )") }
     }
