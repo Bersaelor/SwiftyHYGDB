@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,11 +13,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* LoadSaveRadialStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* LoadSaveRadialStarTests.swift */; };
-		687CE62BEAAFA141F1481A75 /* Pods_SwiftyHYGDB_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */; };
 		714AC2C71F65F4CF00E40D51 /* hygdata_v3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7177EE9E1F65DA2C0046B3AB /* hygdata_v3.csv */; };
 		718ED8BC1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */; };
 		71B4BA32202CB95D00B8E926 /* Star3DIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4BA31202CB95D00B8E926 /* Star3DIndexTests.swift */; };
-		A307FB4DB4408439A75AADF9 /* Pods_SwiftyHYGDB_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2955F986BB99FA7628A2CF0F /* Pods_SwiftyHYGDB_Example.framework */; };
+		71EFF3C124B9BDB50034BA9A /* SwiftyHYGDB in Frameworks */ = {isa = PBXBuildFile; productRef = 71EFF3C024B9BDB50034BA9A /* SwiftyHYGDB */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04682C22C941F862EDEF4C46 /* Pods-SwiftyHYGDB_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Example/Pods-SwiftyHYGDB_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2955F986BB99FA7628A2CF0F /* Pods_SwiftyHYGDB_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SwiftyHYGDB_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyHYGDB_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,13 +45,9 @@
 		718ED8B81F7BD8A20076FD26 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = ../../Tests/LinuxMain.swift; sourceTree = "<group>"; };
 		718ED8BB1F7BD99D0076FD26 /* Testhelper+StarIdentical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Testhelper+StarIdentical.swift"; path = "../../Tests/SwiftyHYGDBTests/Testhelper+StarIdentical.swift"; sourceTree = "<group>"; };
 		71B4BA31202CB95D00B8E926 /* Star3DIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star3DIndexTests.swift; sourceTree = "<group>"; };
-		7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftyHYGDB.podspec; path = ../SwiftyHYGDB.podspec; sourceTree = "<group>"; };
-		92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyHYGDB_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A25476473A7BC174CE21581B /* Pods-SwiftyHYGDB_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B1E2488CDB53F37E5FF84A5B /* Pods-SwiftyHYGDB_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Example/Pods-SwiftyHYGDB_Example.release.xcconfig"; sourceTree = "<group>"; };
+		71EFF3BF24B9BDAD0034BA9A /* SwiftyHYGDB */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyHYGDB; path = ..; sourceTree = "<group>"; };
 		C24D4E181376F0E4ACBF88E1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DE6210ACA45E3131BDE3226F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		E7F5BF0FE6EA5E523F87D73E /* Pods-SwiftyHYGDB_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyHYGDB_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A307FB4DB4408439A75AADF9 /* Pods_SwiftyHYGDB_Example.framework in Frameworks */,
+				71EFF3C124B9BDB50034BA9A /* SwiftyHYGDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				687CE62BEAAFA141F1481A75 /* Pods_SwiftyHYGDB_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,10 +72,6 @@
 		5E13965FD9F45AD856FD6287 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				04682C22C941F862EDEF4C46 /* Pods-SwiftyHYGDB_Example.debug.xcconfig */,
-				B1E2488CDB53F37E5FF84A5B /* Pods-SwiftyHYGDB_Example.release.xcconfig */,
-				E7F5BF0FE6EA5E523F87D73E /* Pods-SwiftyHYGDB_Tests.debug.xcconfig */,
-				A25476473A7BC174CE21581B /* Pods-SwiftyHYGDB_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -91,8 +79,7 @@
 		5EED4C21406C717109786D23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2955F986BB99FA7628A2CF0F /* Pods_SwiftyHYGDB_Example.framework */,
-				92FD4C06F06B1F2763680214 /* Pods_SwiftyHYGDB_Tests.framework */,
+				71EFF3BF24B9BDAD0034BA9A /* SwiftyHYGDB */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				717B37221F6ECB8E00861B51 /* .travis.yml */,
-				7B8261CDD7139D4E2847498C /* SwiftyHYGDB.podspec */,
 				C24D4E181376F0E4ACBF88E1 /* README.md */,
 				DE6210ACA45E3131BDE3226F /* LICENSE */,
 			);
@@ -179,18 +165,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SwiftyHYGDB_Example" */;
 			buildPhases = (
-				775C3620FF0CBEFC723022C1 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				4DA0BB2F242228E24A88CB2D /* [CP] Embed Pods Frameworks */,
-				333BB8062FE8237C29A23CC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SwiftyHYGDB_Example;
+			packageProductDependencies = (
+				71EFF3C024B9BDB50034BA9A /* SwiftyHYGDB */,
+			);
 			productName = SwiftyHYGDB;
 			productReference = 607FACD01AFB9204008FA782 /* SwiftyHYGDB_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -199,12 +185,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SwiftyHYGDB_Tests" */;
 			buildPhases = (
-				B91D48D88E7302F903A80C30 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				AE239B0AF954BD9DC2670DEF /* [CP] Embed Pods Frameworks */,
-				B5F6012E5781CA1EDD1DD807 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,108 +260,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		333BB8062FE8237C29A23CC8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyHYGDB_Example/Pods-SwiftyHYGDB_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4DA0BB2F242228E24A88CB2D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyHYGDB_Example/Pods-SwiftyHYGDB_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyHYGDB/SwiftyHYGDB.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyHYGDB.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyHYGDB_Example/Pods-SwiftyHYGDB_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		775C3620FF0CBEFC723022C1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftyHYGDB_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AE239B0AF954BD9DC2670DEF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B5F6012E5781CA1EDD1DD807 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyHYGDB_Tests/Pods-SwiftyHYGDB_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B91D48D88E7302F903A80C30 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftyHYGDB_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607FACCC1AFB9204008FA782 /* Sources */ = {
@@ -530,37 +411,43 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04682C22C941F862EDEF4C46 /* Pods-SwiftyHYGDB_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H43Z4288RY;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = SwiftyHYGDB/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1E2488CDB53F37E5FF84A5B /* Pods-SwiftyHYGDB_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H43Z4288RY;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = SwiftyHYGDB/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -570,7 +457,6 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7F5BF0FE6EA5E523F87D73E /* Pods-SwiftyHYGDB_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -581,7 +467,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -591,14 +481,17 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A25476473A7BC174CE21581B /* Pods-SwiftyHYGDB_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -637,6 +530,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		71EFF3C024B9BDB50034BA9A /* SwiftyHYGDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyHYGDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }

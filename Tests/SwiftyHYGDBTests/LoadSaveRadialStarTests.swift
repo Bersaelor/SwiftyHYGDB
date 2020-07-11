@@ -104,7 +104,6 @@ class LoadSaveRadialStarTests: XCTestCase {
         if expectedRA < 0 { expectedRA += 24.0 }
         let expectedDec = initialDec + perYearMilliArcSecondsDec * Double(yearsToAdvance) / (1000 * 13600)
         let lines = lineIteratorC(file: fileHandle)
-        var count = 0
         var indexers = SwiftyDBValueIndexers()
 
         if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
@@ -185,7 +184,6 @@ class LoadSaveRadialStarTests: XCTestCase {
                                      z: Float(yearsToAdvance * -0.00005292))
         let expectedPoint = initialPoint +  perYearParsecs
         let lines = lineIteratorC(file: fileHandle)
-        var count = 0
         var indexers = SwiftyDBValueIndexers()
 
         if let linePtr = lines.dropFirst(8).first(where: { _ in true }) {
