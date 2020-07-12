@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SwiftyHYGDB.xcodeproj">
+      location = "self:/Users/konrad/Source/SwiftyHYGDB/Example App/SwiftyHYGDB_TestApp.xcodeproj">
    </FileRef>
 </Workspace>
