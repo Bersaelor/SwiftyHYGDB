@@ -8,8 +8,8 @@
 import Foundation
 
 public struct RadialStar {
-    public static let ascensionRange: CGFloat = 24.0
-    public static let declinationRange: CGFloat = 180
+    public static let ascensionRange: Double = 24.0
+    public static let declinationRange: Double = 180
     
     public let normalizedAscension: Float
     public let normalizedDeclination: Float
@@ -102,9 +102,9 @@ extension RadialStar {
                     starData: self.starData)
     }
     
-    public var starPoint: CGPoint {
-        guard let data = starData?.value else { return CGPoint.zero }
-        return CGPoint(x: CGFloat(data.right_ascension), y: CGFloat(data.declination))
+    public var starPoint: (Float, Float) {
+        guard let data = starData?.value else { return (0, 0) }
+        return (data.right_ascension, data.declination)
     }
 }
 

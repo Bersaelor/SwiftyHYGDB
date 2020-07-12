@@ -45,7 +45,6 @@ public class SwiftyHYGDB: NSObject {
         
         let yearsToAdvance = precess ? Float(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
-        var count = 0
         let stars = lines.dropFirst().compactMap { linePtr -> RadialStar? in
             defer { free(linePtr) }
             return RadialStar(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)
@@ -80,7 +79,6 @@ public class SwiftyHYGDB: NSObject {
 
         let yearsToAdvance = precess ? Double(yearsSinceEraStart) : nil
         let lines = lineIteratorC(file: fileHandle)
-        var count = 0
         let stars = lines.dropFirst().compactMap { linePtr -> Star3D? in
             defer { free(linePtr) }
             return Star3D(rowPtr :linePtr, advanceByYears: yearsToAdvance, indexers: &indexers)

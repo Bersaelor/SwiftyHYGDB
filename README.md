@@ -16,18 +16,18 @@ Includes methods to load `*.csv` files in an efficient way when formatted accord
 
 ## Installation
 
-### Cocoapods
-SwiftyHYGDB is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'SwiftyHYGDB'
-```
 ### Swift Package Manager
 
-Add the following to your `Package.swift`:
+Copy 
+
 ```
-       .Package(url: "https://github.com/Bersaelor/SwiftyHYGDB", majorVersion: 0, minor: 7),
+https://github.com/Bersaelor/SwiftyHYGDB
+```
+and paste it into Xcode -> File -> Swift Packages -> Add Package Dependency.
+
+or add the following to your `Package.swift`:
+```
+    .Package(url: "https://github.com/Bersaelor/SwiftyHYGDB", majorVersion: 1, minor: 0),
 ```
 
 ## License
